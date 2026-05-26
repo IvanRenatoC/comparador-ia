@@ -9,7 +9,7 @@ interface Props {
 }
 
 const COLLECTION_BADGE: Record<CollectionType | 'custom', { label: string; color: string }> = {
-  contrast: { label: 'CURADO', color: '#00d4ff' },
+  contrast: { label: 'CANDIDATO FUERTE', color: '#00d4ff' },
   test: { label: 'TEST', color: '#f59e0b' },
   custom: { label: 'LOCAL', color: '#8b5cf6' },
 }
