@@ -1,27 +1,172 @@
 {
-  "generatedAt": "2026-05-26T03:19:55.273Z",
+  "generatedAt": "2026-05-26T12:48:24.946Z",
   "models": [
+    {
+      "slug": "gpt-oss-120b",
+      "displayName": "GPT-OSS-120B",
+      "file": "modelo-gpt-oss-120b.json",
+      "collection": "contrast",
+      "availableIn": [
+        "contrast"
+      ],
+      "sourceUrl": "https://huggingface.co/openai/gpt-oss-120b/resolve/main/config.json",
+      "isFallback": false,
+      "metrics": {
+        "architectures": [
+          "GptOssForCausalLM"
+        ],
+        "modelType": "gpt_oss",
+        "transformersVersion": "4.55.0.dev0",
+        "hiddenSize": 2880,
+        "numHiddenLayers": 36,
+        "numAttentionHeads": 64,
+        "numKeyValueHeads": 8,
+        "headDim": 64,
+        "intermediateSize": 2880,
+        "vocabSize": 201088,
+        "maxPositionEmbeddings": 131072,
+        "ropeTheta": 150000,
+        "ropeScaling": {
+          "beta_fast": 32,
+          "beta_slow": 1,
+          "factor": 32,
+          "original_max_position_embeddings": 4096,
+          "rope_type": "yarn",
+          "truncate": false
+        },
+        "numLocalExperts": 128,
+        "numExpertsPerTok": 4,
+        "routerAuxLoss": 0.9,
+        "hasVision": false,
+        "isMoE": true,
+        "architecture": "GptOssForCausalLM",
+        "contextWindowTokens": 131072,
+        "layers": 36,
+        "attentionHeads": 64,
+        "kvHeads": 8,
+        "totalExperts": 128,
+        "activeExpertsPerToken": 4
+      },
+      "scores": {
+        "contextScore": 6,
+        "widthScore": 12,
+        "depthScore": 23,
+        "attentionScore": 48,
+        "kvEfficiencyScore": 88,
+        "moeScore": 24,
+        "multimodalScore": 0,
+        "deploymentComplexityScore": 46.8
+      },
+      "missingFields": [
+        "torch_dtype"
+      ]
+    },
+    {
+      "slug": "Qwen3.6-35B-A3B",
+      "displayName": "Qwen3.6-35B-A3B",
+      "file": "modelo-Qwen3.6-35B-A3B.json",
+      "collection": "contrast",
+      "availableIn": [
+        "contrast"
+      ],
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/resolve/main/config.json",
+      "isFallback": false,
+      "metrics": {
+        "architectures": [
+          "Qwen3_5MoeForConditionalGeneration"
+        ],
+        "modelType": "qwen3_5_moe",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.57.1",
+        "hiddenSize": 2048,
+        "numHiddenLayers": 40,
+        "numAttentionHeads": 16,
+        "numKeyValueHeads": 2,
+        "headDim": 256,
+        "intermediateSize": 512,
+        "vocabSize": 248320,
+        "maxPositionEmbeddings": 262144,
+        "ropeTheta": 10000000,
+        "ropeScaling": {
+          "mrope_interleaved": true,
+          "mrope_section": [
+            11,
+            11,
+            10
+          ],
+          "partial_rotary_factor": 0.25,
+          "rope_theta": 10000000,
+          "rope_type": "default"
+        },
+        "numLocalExperts": 256,
+        "numExpertsPerTok": 8,
+        "routerAuxLoss": 0.001,
+        "hasVision": true,
+        "isMoE": true,
+        "architecture": "Qwen3_5MoeForConditionalGeneration",
+        "contextWindowTokens": 262144,
+        "layers": 40,
+        "attentionHeads": 16,
+        "kvHeads": 2,
+        "totalExperts": 256,
+        "activeExpertsPerToken": 8,
+        "dtype": "bfloat16"
+      },
+      "scores": {
+        "contextScore": 12,
+        "widthScore": 7,
+        "depthScore": 27,
+        "attentionScore": 10,
+        "kvEfficiencyScore": 88,
+        "moeScore": 50,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 65
+      },
+      "missingFields": []
+    },
     {
       "slug": "deepseek-v4-flash",
       "displayName": "DeepSeek V4-Flash",
       "file": "modelo-deepseek-v4-flash.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:41.226Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 1048576,
-        "layers": 43,
+        "architectures": [
+          "DeepseekV4ForCausalLM"
+        ],
+        "modelType": "deepseek_v4",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.57.1",
         "hiddenSize": 4096,
-        "attentionHeads": 64,
-        "kvHeads": 1,
+        "numHiddenLayers": 43,
+        "numAttentionHeads": 64,
+        "numKeyValueHeads": 1,
         "headDim": 512,
         "vocabSize": 129280,
+        "maxPositionEmbeddings": 1048576,
+        "ropeTheta": 10000,
+        "ropeScaling": {
+          "beta_fast": 32,
+          "beta_slow": 1,
+          "factor": 16,
+          "original_max_position_embeddings": 65536,
+          "type": "yarn"
+        },
+        "numExpertsPerTok": 6,
         "hasVision": false,
         "isMoE": true,
-        "activeExpertsPerToken": 6,
-        "dtype": "bfloat16",
         "architecture": "DeepseekV4ForCausalLM",
-        "modelType": "deepseek_v4"
+        "contextWindowTokens": 1048576,
+        "layers": 43,
+        "attentionHeads": 64,
+        "kvHeads": 1,
+        "activeExpertsPerToken": 6,
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 50,
@@ -39,23 +184,45 @@
       "slug": "deepseek-v4-pro",
       "displayName": "DeepSeek V4-Pro",
       "file": "modelo-deepseek-v4-pro.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:42.017Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 1048576,
-        "layers": 61,
+        "architectures": [
+          "DeepseekV4ForCausalLM"
+        ],
+        "modelType": "deepseek_v4",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.57.1",
         "hiddenSize": 7168,
-        "attentionHeads": 128,
-        "kvHeads": 1,
+        "numHiddenLayers": 61,
+        "numAttentionHeads": 128,
+        "numKeyValueHeads": 1,
         "headDim": 512,
         "vocabSize": 129280,
+        "maxPositionEmbeddings": 1048576,
+        "ropeTheta": 10000,
+        "ropeScaling": {
+          "beta_fast": 32,
+          "beta_slow": 1,
+          "factor": 16,
+          "original_max_position_embeddings": 65536,
+          "type": "yarn"
+        },
+        "numExpertsPerTok": 6,
         "hasVision": false,
         "isMoE": true,
-        "activeExpertsPerToken": 6,
-        "dtype": "bfloat16",
         "architecture": "DeepseekV4ForCausalLM",
-        "modelType": "deepseek_v4"
+        "contextWindowTokens": 1048576,
+        "layers": 61,
+        "attentionHeads": 128,
+        "kvHeads": 1,
+        "activeExpertsPerToken": 6,
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 50,
@@ -73,22 +240,47 @@
       "slug": "gemma-4-31b-it",
       "displayName": "Gemma 4 31B-IT",
       "file": "modelo-gemma-4-31b-it.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/google/gemma-4-31B-it/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:40.058Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 262144,
-        "layers": 60,
+        "architectures": [
+          "Gemma4ForConditionalGeneration"
+        ],
+        "modelType": "gemma4",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "5.5.0.dev0",
         "hiddenSize": 5376,
-        "attentionHeads": 32,
-        "kvHeads": 16,
+        "numHiddenLayers": 60,
+        "numAttentionHeads": 32,
+        "numKeyValueHeads": 16,
         "headDim": 256,
+        "intermediateSize": 21504,
         "vocabSize": 262144,
+        "maxPositionEmbeddings": 262144,
+        "ropeScaling": {
+          "full_attention": {
+            "partial_rotary_factor": 0.25,
+            "rope_theta": 1000000,
+            "rope_type": "proportional"
+          },
+          "sliding_attention": {
+            "rope_theta": 10000,
+            "rope_type": "default"
+          }
+        },
         "hasVision": true,
         "isMoE": false,
-        "dtype": "bfloat16",
         "architecture": "Gemma4ForConditionalGeneration",
-        "modelType": "gemma4"
+        "contextWindowTokens": 262144,
+        "layers": 60,
+        "attentionHeads": 32,
+        "kvHeads": 16,
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 12,
@@ -106,23 +298,38 @@
       "slug": "glm-5-1",
       "displayName": "GLM-5.1",
       "file": "modelo-glm-5-1.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/zai-org/GLM-5.1/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:41.813Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 202752,
-        "layers": 78,
+        "architectures": [
+          "GlmMoeDsaForCausalLM"
+        ],
+        "modelType": "glm_moe_dsa",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "5.4.0",
         "hiddenSize": 6144,
-        "attentionHeads": 64,
-        "kvHeads": 64,
+        "numHiddenLayers": 78,
+        "numAttentionHeads": 64,
+        "numKeyValueHeads": 64,
         "headDim": 64,
+        "intermediateSize": 12288,
         "vocabSize": 154880,
+        "maxPositionEmbeddings": 202752,
+        "numExpertsPerTok": 8,
         "hasVision": false,
         "isMoE": true,
-        "activeExpertsPerToken": 8,
-        "dtype": "bfloat16",
         "architecture": "GlmMoeDsaForCausalLM",
-        "modelType": "glm_moe_dsa"
+        "contextWindowTokens": 202752,
+        "layers": 78,
+        "attentionHeads": 64,
+        "kvHeads": 64,
+        "activeExpertsPerToken": 8,
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 9,
@@ -137,62 +344,53 @@
       "missingFields": []
     },
     {
-      "slug": "gpt-oss-120b",
-      "displayName": "GPT-OSS-120B",
-      "file": "modelo-gpt-oss-120b.json",
-      "sourceUrl": "https://huggingface.co/openai/gpt-oss-120b/resolve/main/config.json",
-      "isFallback": false,
-      "metrics": {
-        "contextWindowTokens": 131072,
-        "layers": 36,
-        "hiddenSize": 2880,
-        "attentionHeads": 64,
-        "kvHeads": 8,
-        "headDim": 64,
-        "vocabSize": 201088,
-        "hasVision": false,
-        "isMoE": true,
-        "totalExperts": 128,
-        "activeExpertsPerToken": 4,
-        "architecture": "GptOssForCausalLM",
-        "modelType": "gpt_oss"
-      },
-      "scores": {
-        "contextScore": 6,
-        "widthScore": 12,
-        "depthScore": 23,
-        "attentionScore": 48,
-        "kvEfficiencyScore": 88,
-        "moeScore": 24,
-        "multimodalScore": 0,
-        "deploymentComplexityScore": 46.8
-      },
-      "missingFields": [
-        "torch_dtype"
-      ]
-    },
-    {
       "slug": "llama-4-scout-17b-16e",
       "displayName": "Llama 4 Scout 17B",
       "file": "modelo-llama-4-scout-17b-16e.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:41.033Z",
       "isFallback": true,
+      "fallbackNote": "Fallback desde unsloth — repo original requiere acceso gated",
       "metrics": {
-        "contextWindowTokens": 10485760,
-        "layers": 48,
+        "architectures": [
+          "Llama4ForConditionalGeneration"
+        ],
+        "modelType": "llama4",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.52.4",
         "hiddenSize": 5120,
-        "attentionHeads": 40,
-        "kvHeads": 8,
+        "numHiddenLayers": 48,
+        "numAttentionHeads": 40,
+        "numKeyValueHeads": 8,
         "headDim": 128,
+        "intermediateSize": 8192,
         "vocabSize": 202048,
+        "maxPositionEmbeddings": 10485760,
+        "ropeTheta": 500000,
+        "ropeScaling": {
+          "factor": 16,
+          "high_freq_factor": 1,
+          "low_freq_factor": 1,
+          "original_max_position_embeddings": 8192,
+          "rope_type": "llama3"
+        },
+        "numLocalExperts": 16,
+        "numExpertsPerTok": 1,
+        "routerAuxLoss": 0.001,
         "hasVision": true,
         "isMoE": true,
+        "architecture": "Llama4ForConditionalGeneration",
+        "contextWindowTokens": 10485760,
+        "layers": 48,
+        "attentionHeads": 40,
+        "kvHeads": 8,
         "totalExperts": 16,
         "activeExpertsPerToken": 1,
-        "dtype": "bfloat16",
-        "architecture": "Llama4ForConditionalGeneration",
-        "modelType": "llama4"
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 100,
@@ -207,27 +405,153 @@
       "missingFields": []
     },
     {
+      "slug": "Llama-4-Maverick-17B-128E-Instruct",
+      "displayName": "Llama-4-Maverick-17B-128E-Instruct",
+      "file": "modelo-Llama-4-Maverick-17B-128E-Instruct.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "isFallback": false,
+      "metrics": {
+        "architectures": [
+          "Llama4ForConditionalGeneration"
+        ],
+        "modelType": "llama4",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.51.0.dev0",
+        "hiddenSize": 5120,
+        "numHiddenLayers": 48,
+        "numAttentionHeads": 40,
+        "numKeyValueHeads": 8,
+        "headDim": 128,
+        "intermediateSize": 8192,
+        "vocabSize": 202048,
+        "maxPositionEmbeddings": 1048576,
+        "ropeTheta": 500000,
+        "numLocalExperts": 128,
+        "numExpertsPerTok": 1,
+        "routerAuxLoss": 0.001,
+        "hasVision": true,
+        "isMoE": true,
+        "architecture": "Llama4ForConditionalGeneration",
+        "contextWindowTokens": 1048576,
+        "layers": 48,
+        "attentionHeads": 40,
+        "kvHeads": 8,
+        "totalExperts": 128,
+        "activeExpertsPerToken": 1,
+        "dtype": "bfloat16"
+      },
+      "scores": {
+        "contextScore": 50,
+        "widthScore": 27,
+        "depthScore": 33,
+        "attentionScore": 29,
+        "kvEfficiencyScore": 80,
+        "moeScore": 24,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 46.8
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "Mistral-Small-3.2-24B-Instruct-2506",
+      "displayName": "Mistral-Small-3.2-24B-Instruct-2506",
+      "file": "modelo-Mistral-Small-3.2-24B-Instruct-2506.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "isFallback": false,
+      "metrics": {
+        "architectures": [
+          "Mistral3ForConditionalGeneration"
+        ],
+        "modelType": "mistral3",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.52.4",
+        "hiddenSize": 5120,
+        "numHiddenLayers": 40,
+        "numAttentionHeads": 32,
+        "numKeyValueHeads": 8,
+        "headDim": 128,
+        "intermediateSize": 32768,
+        "vocabSize": 131072,
+        "maxPositionEmbeddings": 131072,
+        "ropeTheta": 1000000000,
+        "hasVision": true,
+        "isMoE": false,
+        "architecture": "Mistral3ForConditionalGeneration",
+        "contextWindowTokens": 131072,
+        "layers": 40,
+        "attentionHeads": 32,
+        "kvHeads": 8,
+        "dtype": "bfloat16"
+      },
+      "scores": {
+        "contextScore": 6,
+        "widthScore": 27,
+        "depthScore": 27,
+        "attentionScore": 23,
+        "kvEfficiencyScore": 75,
+        "moeScore": 0,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 27
+      },
+      "missingFields": []
+    },
+    {
       "slug": "qwen3-5-397b-a17b",
       "displayName": "Qwen3.5-397B-A17B",
       "file": "modelo-qwen3-5-397b-a17b.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:41.597Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 262144,
-        "layers": 60,
+        "architectures": [
+          "Qwen3_5MoeForConditionalGeneration"
+        ],
+        "modelType": "qwen3_5_moe",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.57.0.dev0",
         "hiddenSize": 4096,
-        "attentionHeads": 32,
-        "kvHeads": 2,
+        "numHiddenLayers": 60,
+        "numAttentionHeads": 32,
+        "numKeyValueHeads": 2,
         "headDim": 256,
+        "intermediateSize": 1024,
         "vocabSize": 248320,
+        "maxPositionEmbeddings": 262144,
+        "ropeTheta": 10000000,
+        "ropeScaling": {
+          "mrope_interleaved": true,
+          "mrope_section": [
+            11,
+            11,
+            10
+          ],
+          "rope_type": "default",
+          "rope_theta": 10000000,
+          "partial_rotary_factor": 0.25
+        },
+        "numLocalExperts": 512,
+        "numExpertsPerTok": 10,
+        "routerAuxLoss": 0.001,
         "hasVision": true,
         "isMoE": true,
+        "architecture": "Qwen3_5MoeForConditionalGeneration",
+        "contextWindowTokens": 262144,
+        "layers": 60,
+        "attentionHeads": 32,
+        "kvHeads": 2,
         "totalExperts": 512,
         "activeExpertsPerToken": 10,
-        "dtype": "bfloat16",
-        "architecture": "Qwen3_5MoeForConditionalGeneration",
-        "modelType": "qwen3_5_moe"
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 12,
@@ -245,22 +569,48 @@
       "slug": "qwen3-6-27b",
       "displayName": "Qwen3.6-27B",
       "file": "modelo-qwen3-6-27b.json",
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
       "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-27B/resolve/main/config.json",
       "downloadedAt": "2026-05-26T03:00:40.438Z",
       "isFallback": false,
       "metrics": {
-        "contextWindowTokens": 262144,
-        "layers": 64,
+        "architectures": [
+          "Qwen3_5ForConditionalGeneration"
+        ],
+        "modelType": "qwen3_5",
+        "torchDtype": "bfloat16",
+        "transformersVersion": "4.57.1",
         "hiddenSize": 5120,
-        "attentionHeads": 24,
-        "kvHeads": 4,
+        "numHiddenLayers": 64,
+        "numAttentionHeads": 24,
+        "numKeyValueHeads": 4,
         "headDim": 256,
+        "intermediateSize": 17408,
         "vocabSize": 248320,
+        "maxPositionEmbeddings": 262144,
+        "ropeTheta": 10000000,
+        "ropeScaling": {
+          "mrope_interleaved": true,
+          "mrope_section": [
+            11,
+            11,
+            10
+          ],
+          "partial_rotary_factor": 0.25,
+          "rope_theta": 10000000,
+          "rope_type": "default"
+        },
         "hasVision": true,
         "isMoE": false,
-        "dtype": "bfloat16",
         "architecture": "Qwen3_5ForConditionalGeneration",
-        "modelType": "qwen3_5"
+        "contextWindowTokens": 262144,
+        "layers": 64,
+        "attentionHeads": 24,
+        "kvHeads": 4,
+        "dtype": "bfloat16"
       },
       "scores": {
         "contextScore": 12,
@@ -271,40 +621,6 @@
         "moeScore": 0,
         "multimodalScore": 100,
         "deploymentComplexityScore": 27
-      },
-      "missingFields": []
-    },
-    {
-      "slug": "Qwen3.6-35B-A3B",
-      "displayName": "Qwen3.6-35B-A3B",
-      "file": "modelo-Qwen3.6-35B-A3B.json",
-      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/resolve/main/config.json",
-      "isFallback": false,
-      "metrics": {
-        "contextWindowTokens": 262144,
-        "layers": 40,
-        "hiddenSize": 2048,
-        "attentionHeads": 16,
-        "kvHeads": 2,
-        "headDim": 256,
-        "vocabSize": 248320,
-        "hasVision": true,
-        "isMoE": true,
-        "totalExperts": 256,
-        "activeExpertsPerToken": 8,
-        "dtype": "bfloat16",
-        "architecture": "Qwen3_5MoeForConditionalGeneration",
-        "modelType": "qwen3_5_moe"
-      },
-      "scores": {
-        "contextScore": 12,
-        "widthScore": 7,
-        "depthScore": 27,
-        "attentionScore": 10,
-        "kvEfficiencyScore": 88,
-        "moeScore": 50,
-        "multimodalScore": 100,
-        "deploymentComplexityScore": 65
       },
       "missingFields": []
     }

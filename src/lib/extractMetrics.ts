@@ -1,4 +1,4 @@
-import type { ModelMetrics, ModelScores } from '../types'
+import type { ModelMetrics, ModelScores, PairExplanation } from '../types'
 
 function getFirst(obj: Record<string, unknown>, paths: string[]): unknown {
   for (const p of paths) {
@@ -15,7 +15,6 @@ function getFirst(obj: Record<string, unknown>, paths: string[]): unknown {
 
 export function extractMetrics(raw: Record<string, unknown>): { metrics: ModelMetrics; missingFields: string[] } {
   const missing: string[] = []
-
   function grab(label: string, paths: string[]) {
     const val = getFirst(raw, paths)
     if (val === undefined) missing.push(label)
@@ -81,90 +80,132 @@ export function buildScores(metrics: ModelMetrics): ModelScores {
   }
 }
 
-export function generateDynamicExplanation(
-  base: { displayName: string; metrics: ModelMetrics },
-  cmp: { displayName: string; metrics: ModelMetrics; missingFields: string[] }
-) {
-  const bm = base.metrics
-  const cm = cmp.metrics
+export function fmt(val: number | undefined, suffix = ''): string {
+  if (val == null) return 'N/D'
+  if (val >= 1_000_000) return `${(val / 1_000_000).toFixed(1)}M${suffix}`
+  if (val >= 1_000) return `${(val / 1_000).toFixed(0)}k${suffix}`
+  return `${val}${suffix}`
+}
 
-  function fmt(val: number | undefined, suffix = '') {
-    if (val == null) return 'N/D'
-    if (val >= 1_000_000) return `${(val / 1_000_000).toFixed(1)}M${suffix}`
-    if (val >= 1_000) return `${(val / 1_000).toFixed(0)}k${suffix}`
-    return `${val}${suffix}`
-  }
+type Direction = 'up' | 'down' | 'neutral'
 
-  function compareMetric(label: string, baseVal: number | undefined, cmpVal: number | undefined, higherBetter = true, unit = '') {
-    if (baseVal == null && cmpVal == null) return null
-    if (baseVal == null) return { type: 'info', text: `${label}: solo disponible en el modelo comparado (${fmt(cmpVal, unit)}).` }
-    if (cmpVal == null) return { type: 'missing', text: `${label}: no declarado en este modelo (base: ${fmt(baseVal, unit)}).` }
-    const ratio = cmpVal / baseVal
-    if (Math.abs(ratio - 1) < 0.05) {
-      return { type: 'tie', text: `${label}: similar en ambos modelos (${fmt(baseVal, unit)} vs ${fmt(cmpVal, unit)}).` }
-    }
-    const better = higherBetter ? cmpVal > baseVal : cmpVal < baseVal
-    const diff = Math.abs(((cmpVal - baseVal) / baseVal) * 100).toFixed(0)
-    if (better) {
-      return { type: 'win', text: `${label}: ${fmt(cmpVal, unit)} vs ${fmt(baseVal, unit)} — ${diff}% ${higherBetter ? 'mayor' : 'menor'} según config.` }
-    } else {
-      return { type: 'loss', text: `${label}: ${fmt(cmpVal, unit)} vs ${fmt(baseVal, unit)} — ${diff}% ${higherBetter ? 'menor' : 'mayor'} según config.` }
-    }
+function compareNum(
+  label: string,
+  bv: number | undefined,
+  cv: number | undefined,
+  higherBetter = true,
+  unit = ''
+): { type: Direction | 'missing' | 'info'; text: string } | null {
+  if (bv == null && cv == null) return null
+  if (bv == null) return { type: 'info', text: `${label}: solo en B (${fmt(cv, unit)})` }
+  if (cv == null) return { type: 'missing', text: `${label}: no declarado en B (A: ${fmt(bv, unit)})` }
+  const diff = Math.abs(((cv - bv) / (bv || 1)) * 100)
+  if (diff < 5) return { type: 'neutral', text: `${label}: similar (${fmt(bv, unit)} vs ${fmt(cv, unit)})` }
+  const better = higherBetter ? cv > bv : cv < bv
+  const pct = diff.toFixed(0)
+  return {
+    type: better ? 'up' : 'down',
+    text: better
+      ? `${label}: B supera a A — ${fmt(cv, unit)} vs ${fmt(bv, unit)} (${pct}% ${higherBetter ? 'mayor' : 'menor'})`
+      : `${label}: A supera a B — ${fmt(bv, unit)} vs ${fmt(cv, unit)} (${pct}% ${higherBetter ? 'mayor' : 'menor'})`,
   }
+}
+
+export function generatePairExplanation(
+  modelA: { displayName: string; metrics: ModelMetrics; missingFields: string[] },
+  modelB: { displayName: string; metrics: ModelMetrics; missingFields: string[] }
+): PairExplanation {
+  const am = modelA.metrics
+  const bm = modelB.metrics
+  const A = modelA.displayName
+  const B = modelB.displayName
 
   const comparisons = [
-    compareMetric('Ventana de contexto', bm.contextWindowTokens, cm.contextWindowTokens, true, ' tokens'),
-    compareMetric('Capas', bm.layers, cm.layers, true),
-    compareMetric('Hidden size', bm.hiddenSize, cm.hiddenSize, true),
-    compareMetric('Cabezas de atención', bm.attentionHeads, cm.attentionHeads, true),
-    compareMetric('Cabezas KV', bm.kvHeads, cm.kvHeads, false),
-    compareMetric('Vocabulario', bm.vocabSize, cm.vocabSize, true, ' tokens'),
+    compareNum('Ventana de contexto', am.contextWindowTokens, bm.contextWindowTokens, true, ' tokens'),
+    compareNum('Capas de transformador', am.layers, bm.layers, true),
+    compareNum('Hidden size', am.hiddenSize, bm.hiddenSize, true),
+    compareNum('Cabezas de atención', am.attentionHeads, bm.attentionHeads, true),
+    compareNum('Cabezas KV', am.kvHeads, bm.kvHeads, false),
+    compareNum('Vocabulario', am.vocabSize, bm.vocabSize, true, ' tokens'),
   ]
 
-  const wins: string[] = []
-  const losses: string[] = []
+  const wins: string[] = []   // B gana
+  const losses: string[] = [] // A gana
   const ties: string[] = []
   const missingInfo: string[] = []
+  const onPremiseNotes: string[] = []
 
   for (const c of comparisons) {
     if (!c) continue
-    if (c.type === 'win') wins.push(c.text)
-    else if (c.type === 'loss') losses.push(c.text)
-    else if (c.type === 'tie') ties.push(c.text)
+    if (c.type === 'up') wins.push(c.text)
+    else if (c.type === 'down') losses.push(c.text)
+    else if (c.type === 'neutral') ties.push(c.text)
     else if (c.type === 'missing') missingInfo.push(c.text)
     else if (c.type === 'info') ties.push(c.text)
   }
 
-  if (cm.isMoE && !bm.isMoE) {
-    wins.push(`MoE: ${fmt(cm.totalExperts)} expertos totales, ${fmt(cm.activeExpertsPerToken)} activos/token. La base no declara MoE.`)
-  } else if (!cm.isMoE && bm.isMoE) {
-    losses.push(`La base tiene MoE (${fmt(bm.totalExperts)} expertos, ${fmt(bm.activeExpertsPerToken)}/token). Este modelo es denso.`)
-  } else if (cm.isMoE && bm.isMoE) {
-    const c = compareMetric('Expertos totales', bm.totalExperts, cm.totalExperts, true)
+  // MoE
+  if (bm.isMoE && !am.isMoE) {
+    wins.push(`Arquitectura MoE: B usa ${fmt(bm.totalExperts)} expertos totales (${fmt(bm.activeExpertsPerToken)} activos/token). A es denso.`)
+    onPremiseNotes.push(`B es MoE: tiene más parámetros totales que A, pero activa solo ${fmt(bm.activeExpertsPerToken)} expertos por token. El consumo de VRAM en inferencia puede ser menor de lo esperado para su tamaño total.`)
+  } else if (am.isMoE && !bm.isMoE) {
+    losses.push(`A tiene MoE: ${fmt(am.totalExperts)} expertos totales (${fmt(am.activeExpertsPerToken)} activos/token). B es denso.`)
+    onPremiseNotes.push(`A es MoE: su costo de inferencia por token es menor que su tamaño total sugiere, pero requiere cargar todos los pesos en VRAM.`)
+  } else if (am.isMoE && bm.isMoE) {
+    const c = compareNum('Expertos totales (MoE)', am.totalExperts, bm.totalExperts, true)
     if (c) {
-      if (c.type === 'win') wins.push(c.text)
-      else if (c.type === 'loss') losses.push(c.text)
+      if (c.type === 'up') wins.push(c.text)
+      else if (c.type === 'down') losses.push(c.text)
       else ties.push(c.text)
     }
   }
 
-  if (cm.hasVision && !bm.hasVision) wins.push('Multimodal: declara vision_config. La base es solo texto.')
-  else if (!cm.hasVision && bm.hasVision) losses.push('La base declara soporte multimodal. Este modelo es solo texto.')
-  else if (cm.hasVision && bm.hasVision) ties.push('Ambos modelos declaran soporte multimodal.')
+  // Vision
+  if (bm.hasVision && !am.hasVision) {
+    wins.push(`${B} declara vision_config — soporte multimodal. ${A} es solo texto.`)
+    onPremiseNotes.push('Capacidad multimodal arquitectónica no equivale a calidad OCR o análisis documental. Evaluar en producción.')
+  } else if (am.hasVision && !bm.hasVision) {
+    losses.push(`${A} declara vision_config — soporte multimodal. ${B} es solo texto.`)
+    onPremiseNotes.push('Capacidad multimodal arquitectónica no equivale a calidad OCR o análisis documental. Evaluar en producción.')
+  } else if (am.hasVision && bm.hasVision) {
+    ties.push('Ambos modelos declaran soporte multimodal (vision_config).')
+  }
 
-  if (cmp.missingFields.length > 0) missingInfo.push(`Campos no encontrados: ${cmp.missingFields.join(', ')}.`)
+  // VRAM estimate
+  const vramA = am.hiddenSize && am.layers
+    ? Math.round(am.hiddenSize * am.layers * 12 / 1e9 * 2)
+    : null
+  const vramB = bm.hiddenSize && bm.layers
+    ? Math.round(bm.hiddenSize * bm.layers * 12 / 1e9 * 2)
+    : null
+
+  if (vramA != null && vramB != null) {
+    const diff = Math.abs(vramB - vramA)
+    if (diff > 5) {
+      const heavier = vramB > vramA ? B : A
+      onPremiseNotes.push(
+        `Estimación aproximada de VRAM (fp16, solo pesos): ${A} ≈ ${vramA} GB, ${B} ≈ ${vramB} GB. ` +
+        `${heavier} requiere más hardware. Esta estimación no incluye KV cache ni overhead.`
+      )
+    }
+  }
+
+  // Missing fields
+  if (modelA.missingFields.length) missingInfo.push(`Campos N/A en ${A}: ${modelA.missingFields.join(', ')}.`)
+  if (modelB.missingFields.length) missingInfo.push(`Campos N/A en ${B}: ${modelB.missingFields.join(', ')}.`)
 
   const parts = []
-  if (wins.length) parts.push(`ventaja en ${wins.length} dimensión(es)`)
-  if (losses.length) parts.push(`desventaja en ${losses.length} dimensión(es)`)
+  if (wins.length) parts.push(`${B} supera en ${wins.length}`)
+  if (losses.length) parts.push(`${A} supera en ${losses.length}`)
   if (ties.length) parts.push(`${ties.length} similares`)
 
   return {
+    summary: `${A} vs ${B}: ${parts.join(', ')}. Lectura basada en config.json.`,
     wins,
     losses,
     ties,
     missingInfo,
-    summary: `${cmp.displayName} vs ${base.displayName}: ${parts.join(', ')}.`,
-    methodologyWarning: 'Análisis basado en config.json. No refleja benchmarks empíricos.',
+    onPremiseNotes,
+    methodologyWarning: 'Análisis basado en campos declarados en config.json. No refleja benchmarks empíricos ni desempeño real.',
   }
 }

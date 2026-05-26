@@ -1,18 +1,18 @@
-import type { ExplanationItem } from '../types'
+import type { PairExplanation } from '../types'
 
 interface Props {
-  explanation: ExplanationItem
-  baseDisplayName: string
-  cmpDisplayName: string
+  explanation: PairExplanation
+  nameA: string
+  nameB: string
 }
 
 function List({ items, color, icon }: { items: string[]; color: string; icon: string }) {
   if (!items.length) return null
   return (
-    <ul className="space-y-1.5">
+    <ul className="space-y-1.5 mt-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-[12px] font-body leading-relaxed" style={{ color: '#94a3b8' }}>
-          <span className="mt-0.5 text-sm shrink-0" style={{ color }}>{icon}</span>
+        <li key={i} className="flex items-start gap-2 text-[12px] leading-relaxed text-[#94a3b8]">
+          <span className="shrink-0 mt-0.5" style={{ color }}>{icon}</span>
           <span>{item}</span>
         </li>
       ))}
@@ -20,84 +20,82 @@ function List({ items, color, icon }: { items: string[]; color: string; icon: st
   )
 }
 
-export default function ExplanationSection({ explanation, baseDisplayName, cmpDisplayName }: Props) {
+export default function ExplanationSection({ explanation, nameA, nameB }: Props) {
   return (
     <div>
       <div className="text-[10px] font-mono tracking-widest uppercase text-[#4b5e7a] mb-3">
-        Análisis en español — inferencia arquitectónica
+        Lectura ejecutiva de la comparación
       </div>
 
       <div className="bg-[#111827] border border-[#1e2d45] rounded-lg overflow-hidden">
-        {/* Summary bar */}
-        <div className="px-4 py-3 border-b border-[#1e2d45] bg-[#0d1220]">
-          <p className="text-[12px] font-mono text-[#e2e8f0] leading-relaxed">
-            {explanation.summary}
-          </p>
-          <p className="text-[10px] text-[#4b5e7a] mt-1 font-mono">
-            {cmpDisplayName} comparado contra {baseDisplayName}
-          </p>
+        {/* Summary */}
+        <div className="px-4 py-3 bg-[#0d1220] border-b border-[#1e2d45]">
+          <p className="text-[12px] font-mono text-[#e2e8f0] leading-relaxed">{explanation.summary}</p>
+          <div className="flex gap-3 mt-2 text-[10px] font-mono">
+            <span className="text-[#3b82f6]">A: {nameA}</span>
+            <span className="text-[#00d4ff]">B: {nameB}</span>
+          </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#1e2d45]">
-          {/* Wins */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#1e2d45]">
           <div className="bg-[#111827] p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-4 bg-[#10b981] rounded-full" />
-              <div className="text-[9px] font-mono tracking-widest uppercase text-[#10b981]">
-                Donde gana ({explanation.wins.length})
-              </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-4 bg-[#00d4ff] rounded-full" />
+              <span className="text-[9px] font-mono tracking-widest uppercase text-[#00d4ff]">
+                B supera a A ({explanation.wins.length})
+              </span>
             </div>
-            {explanation.wins.length > 0 ? (
-              <List items={explanation.wins} color="#10b981" icon="+" />
-            ) : (
-              <p className="text-[11px] text-[#4b5e7a] font-mono">Sin ventajas detectadas.</p>
-            )}
+            {explanation.wins.length
+              ? <List items={explanation.wins} color="#00d4ff" icon="↑" />
+              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin ventajas detectadas.</p>}
           </div>
 
-          {/* Losses */}
           <div className="bg-[#111827] p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <div className="w-1 h-4 bg-[#f43f5e] rounded-full" />
-              <div className="text-[9px] font-mono tracking-widest uppercase text-[#f43f5e]">
-                Donde pierde ({explanation.losses.length})
-              </div>
+            <div className="flex items-center gap-2">
+              <div className="w-1 h-4 bg-[#3b82f6] rounded-full" />
+              <span className="text-[9px] font-mono tracking-widest uppercase text-[#3b82f6]">
+                A supera a B ({explanation.losses.length})
+              </span>
             </div>
-            {explanation.losses.length > 0 ? (
-              <List items={explanation.losses} color="#f43f5e" icon="−" />
-            ) : (
-              <p className="text-[11px] text-[#4b5e7a] font-mono">Sin desventajas detectadas.</p>
-            )}
+            {explanation.losses.length
+              ? <List items={explanation.losses} color="#3b82f6" icon="↑" />
+              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin ventajas de A detectadas.</p>}
           </div>
 
-          {/* Ties */}
-          <div className="bg-[#111827] p-4 md:col-span-2 lg:col-span-1">
-            <div className="flex items-center gap-2 mb-3">
+          <div className="bg-[#111827] p-4">
+            <div className="flex items-center gap-2">
               <div className="w-1 h-4 bg-[#f59e0b] rounded-full" />
-              <div className="text-[9px] font-mono tracking-widest uppercase text-[#f59e0b]">
-                Empate / diferencia menor ({explanation.ties.length})
-              </div>
+              <span className="text-[9px] font-mono tracking-widest uppercase text-[#f59e0b]">
+                Similares / N/D ({explanation.ties.length})
+              </span>
             </div>
-            {explanation.ties.length > 0 ? (
-              <List items={explanation.ties} color="#f59e0b" icon="≈" />
-            ) : (
-              <p className="text-[11px] text-[#4b5e7a] font-mono">Sin empates detectados.</p>
-            )}
+            {explanation.ties.length
+              ? <List items={explanation.ties} color="#f59e0b" icon="≈" />
+              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin empates.</p>}
           </div>
         </div>
+
+        {/* On-premise notes */}
+        {explanation.onPremiseNotes.length > 0 && (
+          <div className="px-4 py-3 border-t border-[#1e2d45] bg-[#0d1220]">
+            <div className="text-[9px] font-mono tracking-widest uppercase text-[#8b5cf6] mb-2">
+              Relevancia para operación on-premise
+            </div>
+            <List items={explanation.onPremiseNotes} color="#8b5cf6" icon="→" />
+          </div>
+        )}
 
         {/* Missing info */}
         {explanation.missingInfo.length > 0 && (
-          <div className="px-4 py-3 border-t border-[#1e2d45] bg-[#0d1220]">
-            <div className="text-[9px] font-mono tracking-widest uppercase text-[#f59e0b] mb-2">Campos ausentes</div>
+          <div className="px-4 py-2.5 border-t border-[#1e2d45] bg-[#0d1220]">
+            <div className="text-[9px] font-mono tracking-widest uppercase text-[#f59e0b] mb-1">Campos no declarados</div>
             <List items={explanation.missingInfo} color="#f59e0b" icon="!" />
           </div>
         )}
 
-        {/* Methodology warning */}
-        <div className="px-4 py-2.5 border-t border-[#1e2d45] bg-[#080b14]">
-          <p className="text-[10px] font-mono text-[#4b5e7a]">
-            ⚠ {explanation.methodologyWarning}
-          </p>
+        {/* Methodology */}
+        <div className="px-4 py-2 border-t border-[#1e2d45] bg-[#080b14]">
+          <p className="text-[10px] font-mono text-[#4b5e7a]">⚠ {explanation.methodologyWarning}</p>
         </div>
       </div>
     </div>

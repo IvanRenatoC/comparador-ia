@@ -1,152 +1,211 @@
 {
-  "generatedAt": "2026-05-26T03:19:55.403Z",
-  "baselineSlug": "gpt-oss-120b",
-  "baselineDisplayName": "GPT-OSS-120B",
-  "items": {
-    "deepseek-v4-flash": {
-      "wins": [
-        "Ventana de contexto: 1.0M tokens vs 131k tokens del base — 700% mayor según config.",
-        "Capas de transformador: 43 vs 36 del base — 19% mayor según config.",
-        "Dimensión oculta (hidden size): 4k vs 3k del base — 42% mayor según config.",
-        "Cabezas KV: 1 vs 8 del base — 88% menor según config."
+  "generatedAt": "2026-05-26T12:48:24.996Z",
+  "note": "Perfiles por modelo individual. La comparación dinámica de pares se genera en el frontend.",
+  "profiles": {
+    "gpt-oss-120b": {
+      "highlights": [
+        "Ventana de contexto: 131k tokens",
+        "Profundidad: 36 capas de transformador",
+        "Dimensión interna: 3k (hidden size)",
+        "Arquitectura MoE: 128 expertos totales, 4 activos por token"
       ],
-      "losses": [
-        "Vocabulario: 129k tokens vs 201k tokens del base — 36% menor que la base según config."
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "Usa GQA/MQA: 8 cabezas KV para 64 cabezas de atención, lo que reduce uso de memoria en inferencia."
       ],
-      "ties": [
-        "Cabezas de atención: similar en ambos modelos (64 vs 64).",
-        "Expertos totales MoE: no declarado en este modelo (base: 128)."
+      "collection": "contrast",
+      "availableIn": [
+        "contrast"
       ],
-      "missingInfo": [],
-      "summary": "DeepSeek V4-Flash vs GPT-OSS-120B: ventaja en 4 dimensión(es), desventaja en 1 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "deepseek-v4-pro": {
-      "wins": [
-        "Ventana de contexto: 1.0M tokens vs 131k tokens del base — 700% mayor según config.",
-        "Capas de transformador: 61 vs 36 del base — 69% mayor según config.",
-        "Dimensión oculta (hidden size): 7k vs 3k del base — 149% mayor según config.",
-        "Cabezas de atención: 128 vs 64 del base — 100% mayor según config.",
-        "Cabezas KV: 1 vs 8 del base — 88% menor según config."
-      ],
-      "losses": [
-        "Vocabulario: 129k tokens vs 201k tokens del base — 36% menor que la base según config."
-      ],
-      "ties": [
-        "Expertos totales MoE: no declarado en este modelo (base: 128)."
-      ],
-      "missingInfo": [],
-      "summary": "DeepSeek V4-Pro vs GPT-OSS-120B: ventaja en 5 dimensión(es), desventaja en 1 dimensión(es), 1 dimensión(es) similares, según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "gemma-4-31b-it": {
-      "wins": [
-        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
-        "Capas de transformador: 60 vs 36 del base — 67% mayor según config.",
-        "Dimensión oculta (hidden size): 5k vs 3k del base — 87% mayor según config.",
-        "Vocabulario: 262k tokens vs 201k tokens del base — 30% mayor según config.",
-        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
-      ],
-      "losses": [
-        "Cabezas de atención: 32 vs 64 del base — 50% menor que la base según config.",
-        "Cabezas KV: 16 vs 8 del base — 100% mayor que la base según config.",
-        "El modelo base tiene arquitectura MoE (128 expertos, 4 activos/token); este modelo es denso."
-      ],
-      "ties": [],
-      "missingInfo": [],
-      "summary": "Gemma 4 31B-IT vs GPT-OSS-120B: ventaja en 5 dimensión(es), desventaja en 3 dimensión(es), según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "glm-5-1": {
-      "wins": [
-        "Ventana de contexto: 203k tokens vs 131k tokens del base — 55% mayor según config.",
-        "Capas de transformador: 78 vs 36 del base — 117% mayor según config.",
-        "Dimensión oculta (hidden size): 6k vs 3k del base — 113% mayor según config."
-      ],
-      "losses": [
-        "Cabezas KV: 64 vs 8 del base — 700% mayor que la base según config.",
-        "Vocabulario: 155k tokens vs 201k tokens del base — 23% menor que la base según config."
-      ],
-      "ties": [
-        "Cabezas de atención: similar en ambos modelos (64 vs 64).",
-        "Expertos totales MoE: no declarado en este modelo (base: 128)."
-      ],
-      "missingInfo": [],
-      "summary": "GLM-5.1 vs GPT-OSS-120B: ventaja en 3 dimensión(es), desventaja en 2 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "llama-4-scout-17b-16e": {
-      "wins": [
-        "Ventana de contexto: 10.5M tokens vs 131k tokens del base — 7900% mayor según config.",
-        "Capas de transformador: 48 vs 36 del base — 33% mayor según config.",
-        "Dimensión oculta (hidden size): 5k vs 3k del base — 78% mayor según config.",
-        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
-      ],
-      "losses": [
-        "Cabezas de atención: 40 vs 64 del base — 38% menor que la base según config.",
-        "Expertos totales MoE: 16 vs 128 del base — 88% menor que la base según config."
-      ],
-      "ties": [
-        "Cabezas KV: similar en ambos modelos (8 vs 8).",
-        "Vocabulario: similar en ambos modelos (201k tokens vs 202k tokens)."
-      ],
-      "missingInfo": [],
-      "summary": "Llama 4 Scout 17B vs GPT-OSS-120B: ventaja en 4 dimensión(es), desventaja en 2 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "qwen3-5-397b-a17b": {
-      "wins": [
-        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
-        "Capas de transformador: 60 vs 36 del base — 67% mayor según config.",
-        "Dimensión oculta (hidden size): 4k vs 3k del base — 42% mayor según config.",
-        "Cabezas KV: 2 vs 8 del base — 75% menor según config.",
-        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
-        "Expertos totales MoE: 512 vs 128 del base — 300% mayor según config.",
-        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
-      ],
-      "losses": [
-        "Cabezas de atención: 32 vs 64 del base — 50% menor que la base según config."
-      ],
-      "ties": [],
-      "missingInfo": [],
-      "summary": "Qwen3.5-397B-A17B vs GPT-OSS-120B: ventaja en 7 dimensión(es), desventaja en 1 dimensión(es), según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
-    },
-    "qwen3-6-27b": {
-      "wins": [
-        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
-        "Capas de transformador: 64 vs 36 del base — 78% mayor según config.",
-        "Dimensión oculta (hidden size): 5k vs 3k del base — 78% mayor según config.",
-        "Cabezas KV: 4 vs 8 del base — 50% menor según config.",
-        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
-        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
-      ],
-      "losses": [
-        "Cabezas de atención: 24 vs 64 del base — 63% menor que la base según config.",
-        "El modelo base tiene arquitectura MoE (128 expertos, 4 activos/token); este modelo es denso."
-      ],
-      "ties": [],
-      "missingInfo": [],
-      "summary": "Qwen3.6-27B vs GPT-OSS-120B: ventaja en 6 dimensión(es), desventaja en 2 dimensión(es), según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
     },
     "Qwen3.6-35B-A3B": {
-      "wins": [
-        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
-        "Capas de transformador: 40 vs 36 del base — 11% mayor según config.",
-        "Cabezas KV: 2 vs 8 del base — 75% menor según config.",
-        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
-        "Expertos totales MoE: 256 vs 128 del base — 100% mayor según config.",
-        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      "highlights": [
+        "Ventana de contexto: 262k tokens",
+        "Profundidad: 40 capas de transformador",
+        "Dimensión interna: 2k (hidden size)",
+        "Arquitectura MoE: 256 expertos totales, 8 activos por token",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
       ],
-      "losses": [
-        "Dimensión oculta (hidden size): 2k vs 3k del base — 29% menor que la base según config.",
-        "Cabezas de atención: 16 vs 64 del base — 75% menor que la base según config."
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 2 cabezas KV para 16 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
       ],
-      "ties": [],
-      "missingInfo": [],
-      "summary": "Qwen3.6-35B-A3B vs GPT-OSS-120B: ventaja en 6 dimensión(es), desventaja en 2 dimensión(es), según arquitectura declarada en config.json.",
-      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+      "collection": "contrast",
+      "availableIn": [
+        "contrast"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "deepseek-v4-flash": {
+      "highlights": [
+        "Ventana de contexto: 1.0M tokens",
+        "Profundidad: 43 capas de transformador",
+        "Dimensión interna: 4k (hidden size)",
+        "Arquitectura MoE: número no declarado de expertos, 6 activos por token"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "Usa GQA/MQA: 1 cabezas KV para 64 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "deepseek-v4-pro": {
+      "highlights": [
+        "Ventana de contexto: 1.0M tokens",
+        "Profundidad: 61 capas de transformador",
+        "Dimensión interna: 7k (hidden size)",
+        "Arquitectura MoE: número no declarado de expertos, 6 activos por token"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "Usa GQA/MQA: 1 cabezas KV para 128 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "gemma-4-31b-it": {
+      "highlights": [
+        "Ventana de contexto: 262k tokens",
+        "Profundidad: 60 capas de transformador",
+        "Dimensión interna: 5k (hidden size)",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 16 cabezas KV para 32 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "glm-5-1": {
+      "highlights": [
+        "Ventana de contexto: 203k tokens",
+        "Profundidad: 78 capas de transformador",
+        "Dimensión interna: 6k (hidden size)",
+        "Arquitectura MoE: número no declarado de expertos, 8 activos por token"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "llama-4-scout-17b-16e": {
+      "highlights": [
+        "Ventana de contexto: 10.5M tokens",
+        "Profundidad: 48 capas de transformador",
+        "Dimensión interna: 5k (hidden size)",
+        "Arquitectura MoE: 16 expertos totales, 1 activos por token",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 8 cabezas KV para 40 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16",
+        "NOTA: Este config proviene de un repositorio alternativo (fallback). Fallback desde unsloth — repo original requiere acceso gated"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "Llama-4-Maverick-17B-128E-Instruct": {
+      "highlights": [
+        "Ventana de contexto: 1.0M tokens",
+        "Profundidad: 48 capas de transformador",
+        "Dimensión interna: 5k (hidden size)",
+        "Arquitectura MoE: 128 expertos totales, 1 activos por token",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 8 cabezas KV para 40 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "Mistral-Small-3.2-24B-Instruct-2506": {
+      "highlights": [
+        "Ventana de contexto: 131k tokens",
+        "Profundidad: 40 capas de transformador",
+        "Dimensión interna: 5k (hidden size)",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 8 cabezas KV para 32 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "qwen3-5-397b-a17b": {
+      "highlights": [
+        "Ventana de contexto: 262k tokens",
+        "Profundidad: 60 capas de transformador",
+        "Dimensión interna: 4k (hidden size)",
+        "Arquitectura MoE: 512 expertos totales, 10 activos por token",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "Al ser MoE, los parámetros activos por inferencia son menores que el total de parámetros del modelo.",
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 2 cabezas KV para 32 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
+    },
+    "qwen3-6-27b": {
+      "highlights": [
+        "Ventana de contexto: 262k tokens",
+        "Profundidad: 64 capas de transformador",
+        "Dimensión interna: 5k (hidden size)",
+        "Incluye vision_config: el modelo declara soporte multimodal (texto + imagen)"
+      ],
+      "notes": [
+        "La presencia de vision_config indica capacidad multimodal declarada, no necesariamente calidad OCR o análisis documental real.",
+        "Usa GQA/MQA: 4 cabezas KV para 24 cabezas de atención, lo que reduce uso de memoria en inferencia.",
+        "Tipo de dato declarado: bfloat16"
+      ],
+      "collection": "test",
+      "availableIn": [
+        "test"
+      ],
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos ni desempeño real en producción."
     }
   }
 }
