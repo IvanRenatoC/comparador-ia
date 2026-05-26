@@ -11,7 +11,7 @@ function List({ items, color, icon }: { items: string[]; color: string; icon: st
   return (
     <ul className="space-y-1.5 mt-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-[12px] leading-relaxed text-[#334155] dark:text-[#f5f6f7]">
+        <li key={i} className="flex items-start gap-2 text-sm leading-relaxed text-[#334155] dark:text-[#f5f6f7]">
           <span className="shrink-0 mt-0.5" style={{ color }}>{icon}</span>
           <span>{item}</span>
         </li>
@@ -23,15 +23,15 @@ function List({ items, color, icon }: { items: string[]; color: string; icon: st
 export default function ExplanationSection({ explanation, nameA, nameB }: Props) {
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
+      <div className="text-xs font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
         Lectura ejecutiva de la comparación
       </div>
 
       <div className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg overflow-hidden">
         {/* Summary */}
         <div className="px-4 py-3 bg-[#f1f5f9] dark:bg-[#0d1220] border-b border-[#e2e8f0] dark:border-[#1e2d45]">
-          <p className="text-[12px] font-mono text-[#0f172a] dark:text-[#e2e8f0] leading-relaxed">{explanation.summary}</p>
-          <div className="flex gap-3 mt-2 text-[10px] font-mono">
+          <p className="text-sm font-mono text-[#0f172a] dark:text-[#e2e8f0] leading-relaxed">{explanation.summary}</p>
+          <div className="flex gap-3 mt-2 text-xs font-mono">
             <span className="text-[#3b82f6]">A: {nameA}</span>
             <span className="text-[#00d4ff]">B: {nameB}</span>
           </div>
@@ -47,7 +47,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.wins.length
               ? <List items={explanation.wins} color="#00d4ff" icon="↑" />
-              : <p className="text-[11px] text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin ventajas detectadas.</p>}
+              : <p className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin ventajas detectadas.</p>}
           </div>
 
           <div className="bg-[#f8fafc] dark:bg-[#111827] p-4">
@@ -59,7 +59,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.losses.length
               ? <List items={explanation.losses} color="#3b82f6" icon="↑" />
-              : <p className="text-[11px] text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin ventajas de A detectadas.</p>}
+              : <p className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin ventajas de A detectadas.</p>}
           </div>
 
           <div className="bg-[#f8fafc] dark:bg-[#111827] p-4">
@@ -71,7 +71,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.ties.length
               ? <List items={explanation.ties} color="#f59e0b" icon="≈" />
-              : <p className="text-[11px] text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin empates.</p>}
+              : <p className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mt-2">Sin empates.</p>}
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
 
         {/* Methodology */}
         <div className="px-4 py-2 border-t border-[#e2e8f0] dark:border-[#1e2d45] bg-white dark:bg-[#080b14]">
-          <p className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7]">⚠ {explanation.methodologyWarning}</p>
+          <p className="text-xs font-mono text-[#334155] dark:text-[#f5f6f7]">⚠ {explanation.methodologyWarning}</p>
         </div>
       </div>
     </div>
