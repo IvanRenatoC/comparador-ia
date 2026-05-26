@@ -56,12 +56,12 @@ export default function ComparisonTable({ base, cmp }: Props) {
 
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
+      <div className="text-xs font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
         Tabla técnica comparativa
       </div>
       <div className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-[11px] font-mono">
+          <table className="w-full text-xs font-mono">
             <thead>
               <tr className="border-b border-[#e2e8f0] dark:border-[#1e2d45] bg-[#f1f5f9] dark:bg-[#0d1220]">
                 <th className="text-left px-4 py-2.5 text-[#334155] dark:text-[#f5f6f7] tracking-widest uppercase text-[9px] w-36">Métrica</th>
@@ -95,7 +95,7 @@ export default function ComparisonTable({ base, cmp }: Props) {
       </div>
 
       {(base.missingFields.length > 0 || cmp.missingFields.length > 0) && (
-        <div className="mt-2 bg-[#f59e0b]/5 border border-[#f59e0b]/20 rounded p-3 text-[10px] font-mono text-[#f59e0b]">
+        <div className="mt-2 bg-[#f59e0b]/5 border border-[#f59e0b]/20 rounded p-3 text-xs font-mono text-[#f59e0b]">
           <div className="font-bold mb-1">Campos faltantes detectados</div>
           {base.missingFields.length > 0 && <div>{base.displayName}: {base.missingFields.join(', ')}</div>}
           {cmp.missingFields.length > 0 && <div>{cmp.displayName}: {cmp.missingFields.join(', ')}</div>}

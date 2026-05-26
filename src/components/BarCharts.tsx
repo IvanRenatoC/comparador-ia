@@ -39,7 +39,7 @@ interface ChartData {
 function CustomTooltip({ active, payload, label }: { active?: boolean; payload?: Array<{ name: string; value: number; color: string }>; label?: string }) {
   if (!active || !payload?.length) return null
   return (
-    <div className="bg-[#e8edf4] dark:bg-[#1a2235] border border-[#cbd5e1] dark:border-[#2d4060] rounded p-2.5 text-[11px] font-mono shadow-xl">
+    <div className="bg-[#e8edf4] dark:bg-[#1a2235] border border-[#cbd5e1] dark:border-[#2d4060] rounded p-2.5 text-xs font-mono shadow-xl">
       <div className="text-[#334155] dark:text-[#f5f6f7] mb-1.5">{label}</div>
       {payload.map(p => (
         <div key={p.name} className="flex items-center gap-2">
@@ -72,11 +72,11 @@ export default function BarCharts({ base, cmp }: Props) {
 
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
+      <div className="text-xs font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
         Comparación directa — métricas arquitectónicas
       </div>
       <div className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg p-4">
-        <div className="flex items-center gap-4 mb-4 text-[11px] font-mono">
+        <div className="flex items-center gap-4 mb-4 text-xs font-mono">
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-sm bg-[#3b82f6] inline-block" />
             <span className="text-[#334155] dark:text-[#f5f6f7]">{base.displayName}</span>

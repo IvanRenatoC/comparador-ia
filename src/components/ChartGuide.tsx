@@ -41,9 +41,9 @@ export default function ChartGuide() {
     <div>
       <button
         onClick={() => setOpen(v => !v)}
-        className="flex items-center gap-2 text-[11px] font-mono text-[#334155] dark:text-[#f5f6f7] hover:text-[#00d4ff] transition-colors w-full"
+        className="flex items-center gap-2 text-xs font-mono text-[#334155] dark:text-[#f5f6f7] hover:text-[#00d4ff] transition-colors w-full"
       >
-        <span className="border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-2 py-0.5 text-[10px] font-mono">
+        <span className="border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-2 py-0.5 text-xs font-mono">
           {open ? '▲' : '▼'}
         </span>
         <span>Cómo interpretar los gráficos</span>
@@ -59,16 +59,16 @@ export default function ChartGuide() {
                   onClick={() => setExpanded(expanded === s.key ? null : s.key)}
                   className="w-full flex items-start gap-3 px-4 py-3 text-left"
                 >
-                  <span className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] mt-0.5 shrink-0">
+                  <span className="text-xs font-mono text-[#334155] dark:text-[#f5f6f7] mt-0.5 shrink-0">
                     {expanded === s.key ? '▼' : '▶'}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[11px] font-mono text-[#0f172a] dark:text-[#e2e8f0]">{s.label}</div>
-                    <div className="text-[11px] text-[#334155] dark:text-[#f5f6f7] mt-0.5">{s.short}</div>
+                    <div className="text-xs font-mono text-[#0f172a] dark:text-[#e2e8f0]">{s.label}</div>
+                    <div className="text-xs text-[#334155] dark:text-[#f5f6f7] mt-0.5">{s.short}</div>
                   </div>
                 </button>
                 {expanded === s.key && (
-                  <div className="px-9 pb-3 text-[11px] text-[#334155] dark:text-[#f5f6f7] leading-relaxed border-t border-[#e2e8f0] dark:border-[#1e2d45]/50 pt-2 bg-white dark:bg-[#080b14]">
+                  <div className="px-9 pb-3 text-xs text-[#334155] dark:text-[#f5f6f7] leading-relaxed border-t border-[#e2e8f0] dark:border-[#1e2d45]/50 pt-2 bg-white dark:bg-[#080b14]">
                     {s.detail}
                   </div>
                 )}

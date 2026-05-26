@@ -99,7 +99,7 @@ export default function App() {
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-3">
           <div className="w-8 h-8 border border-[#00d4ff]/40 rounded animate-spin border-t-[#00d4ff] mx-auto" />
-          <p className="text-[12px] font-mono text-[#334155] dark:text-[#f5f6f7]">Cargando índice de modelos...</p>
+          <p className="text-sm font-mono text-[#334155] dark:text-[#f5f6f7]">Cargando índice de modelos...</p>
         </div>
       </div>
     )
@@ -109,8 +109,8 @@ export default function App() {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center space-y-3 max-w-md px-4">
-          <p className="text-[#f43f5e] font-mono text-sm">{fetchError ?? 'No se encontraron modelos en el índice.'}</p>
-          <p className="text-[11px] text-[#334155] dark:text-[#f5f6f7] font-mono">Ejecuta: npm run prepare:data && npm run build</p>
+          <p className="text-[#f43f5e] font-mono text-base">{fetchError ?? 'No se encontraron modelos en el índice.'}</p>
+          <p className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono">Ejecuta: npm run prepare:data && npm run build</p>
         </div>
       </div>
     )
@@ -152,14 +152,14 @@ export default function App() {
 
             {/* Same model warning */}
             {isSameModel && (
-              <div className="mt-4 bg-[#f59e0b]/5 border border-[#f59e0b]/30 rounded p-3 text-[11px] font-mono text-[#f59e0b]">
+              <div className="mt-4 bg-[#f59e0b]/5 border border-[#f59e0b]/30 rounded p-3 text-xs font-mono text-[#f59e0b]">
                 Estás comparando el mismo modelo en ambos lados. Selecciona un modelo distinto para ver diferencias.
               </div>
             )}
 
             {/* Stats + add button */}
             <div className="mt-4 pt-4 border-t border-[#e2e8f0] dark:border-[#1e2d45] flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-2 text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7]">
+              <div className="flex flex-wrap gap-2 text-xs font-mono text-[#334155] dark:text-[#f5f6f7]">
                 <span>{allModels.length} modelos en total</span>
                 <span>·</span>
                 <span className="flex items-center gap-1">
@@ -177,7 +177,7 @@ export default function App() {
               </div>
               <button
                 onClick={() => setShowAddModal(true)}
-                className="text-[11px] font-mono text-[#00d4ff] hover:text-[#0f172a] dark:hover:text-white border border-[#00d4ff]/30 hover:border-[#00d4ff] rounded px-3 py-1.5 transition-all"
+                className="text-xs font-mono text-[#00d4ff] hover:text-[#0f172a] dark:hover:text-white border border-[#00d4ff]/30 hover:border-[#00d4ff] rounded px-3 py-1.5 transition-all"
               >
                 + Agregar por config.json
               </button>
@@ -231,7 +231,7 @@ export default function App() {
           </div>
         </Section>
 
-        <footer className="border-t border-[#e2e8f0] dark:border-[#1e2d45] pt-6 pb-4 text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] flex flex-col sm:flex-row items-center justify-between gap-2">
+        <footer className="border-t border-[#e2e8f0] dark:border-[#1e2d45] pt-6 pb-4 text-xs font-mono text-[#334155] dark:text-[#f5f6f7] flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>COMPARADOR_IA · Análisis arquitectónico desde config.json · Sin benchmarks empíricos</span>
           <span className="text-[#94a3b8] dark:text-[#2d4060]">localhost:5050 · Vercel-ready</span>
         </footer>

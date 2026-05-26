@@ -28,13 +28,13 @@ function Card({
       <div className="text-[9px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">{label}</div>
       <div className="flex items-end justify-between gap-2">
         <div>
-          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
-          <div className="text-sm font-mono text-[#1e293b] dark:text-[#f5f6f7]">{baseVal}{unit}</div>
+          <div className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
+          <div className="text-base font-mono text-[#1e293b] dark:text-[#f5f6f7]">{baseVal}{unit}</div>
         </div>
         <div className="text-right">
-          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
+          <div className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
           <div
-            className={`text-sm font-mono font-bold ${!c ? 'text-[#0f172a] dark:text-[#e2e8f0]' : ''}`}
+            className={`text-base font-mono font-bold ${!c ? 'text-[#0f172a] dark:text-[#e2e8f0]' : ''}`}
             style={c ? { color: c } : undefined}
           >{cmpVal}{unit}</div>
         </div>
@@ -49,14 +49,14 @@ function boolCard(label: string, baseVal: boolean, cmpVal: boolean) {
       <div className="text-[9px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">{label}</div>
       <div className="flex items-center justify-between gap-2">
         <div>
-          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
-          <div className={`text-xs font-mono font-bold ${baseVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
+          <div className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
+          <div className={`text-sm font-mono font-bold ${baseVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
             {baseVal ? 'SÍ' : 'NO'}
           </div>
         </div>
         <div className="text-right">
-          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
-          <div className={`text-xs font-mono font-bold ${cmpVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
+          <div className="text-xs text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
+          <div className={`text-sm font-mono font-bold ${cmpVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
             {cmpVal ? 'SÍ' : 'NO'}
           </div>
         </div>
@@ -78,7 +78,7 @@ export default function MetricsCards({ base, cmp }: Props) {
 
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
+      <div className="text-xs font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
         Resumen de métricas clave
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
