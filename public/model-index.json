@@ -1,0 +1,312 @@
+{
+  "generatedAt": "2026-05-26T03:01:09.444Z",
+  "models": [
+    {
+      "slug": "deepseek-v4-flash",
+      "displayName": "DeepSeek V4-Flash",
+      "file": "modelo-deepseek-v4-flash.json",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.226Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 1048576,
+        "layers": 43,
+        "hiddenSize": 4096,
+        "attentionHeads": 64,
+        "kvHeads": 1,
+        "headDim": 512,
+        "vocabSize": 129280,
+        "hasVision": false,
+        "isMoE": true,
+        "activeExpertsPerToken": 6,
+        "dtype": "bfloat16",
+        "architecture": "DeepseekV4ForCausalLM",
+        "modelType": "deepseek_v4"
+      },
+      "scores": {
+        "contextScore": 50,
+        "widthScore": 20,
+        "depthScore": 29,
+        "attentionScore": 48,
+        "kvEfficiencyScore": 98,
+        "moeScore": 0,
+        "multimodalScore": 0,
+        "deploymentComplexityScore": 30
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "deepseek-v4-pro",
+      "displayName": "DeepSeek V4-Pro",
+      "file": "modelo-deepseek-v4-pro.json",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:42.017Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 1048576,
+        "layers": 61,
+        "hiddenSize": 7168,
+        "attentionHeads": 128,
+        "kvHeads": 1,
+        "headDim": 512,
+        "vocabSize": 129280,
+        "hasVision": false,
+        "isMoE": true,
+        "activeExpertsPerToken": 6,
+        "dtype": "bfloat16",
+        "architecture": "DeepseekV4ForCausalLM",
+        "modelType": "deepseek_v4"
+      },
+      "scores": {
+        "contextScore": 50,
+        "widthScore": 40,
+        "depthScore": 44,
+        "attentionScore": 100,
+        "kvEfficiencyScore": 99,
+        "moeScore": 0,
+        "multimodalScore": 0,
+        "deploymentComplexityScore": 30
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "gemma-4-31b-it",
+      "displayName": "Gemma 4 31B-IT",
+      "file": "modelo-gemma-4-31b-it.json",
+      "sourceUrl": "https://huggingface.co/google/gemma-4-31B-it/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:40.058Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 262144,
+        "layers": 60,
+        "hiddenSize": 5376,
+        "attentionHeads": 32,
+        "kvHeads": 16,
+        "headDim": 256,
+        "vocabSize": 262144,
+        "hasVision": true,
+        "isMoE": false,
+        "dtype": "bfloat16",
+        "architecture": "Gemma4ForConditionalGeneration",
+        "modelType": "gemma4"
+      },
+      "scores": {
+        "contextScore": 12,
+        "widthScore": 28,
+        "depthScore": 43,
+        "attentionScore": 23,
+        "kvEfficiencyScore": 50,
+        "moeScore": 0,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 28
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "glm-5-1",
+      "displayName": "GLM-5.1",
+      "file": "modelo-glm-5-1.json",
+      "sourceUrl": "https://huggingface.co/zai-org/GLM-5.1/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.813Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 202752,
+        "layers": 78,
+        "hiddenSize": 6144,
+        "attentionHeads": 64,
+        "kvHeads": 64,
+        "headDim": 64,
+        "vocabSize": 154880,
+        "hasVision": false,
+        "isMoE": true,
+        "activeExpertsPerToken": 8,
+        "dtype": "bfloat16",
+        "architecture": "GlmMoeDsaForCausalLM",
+        "modelType": "glm_moe_dsa"
+      },
+      "scores": {
+        "contextScore": 9,
+        "widthScore": 33,
+        "depthScore": 58,
+        "attentionScore": 48,
+        "kvEfficiencyScore": 0,
+        "moeScore": 0,
+        "multimodalScore": 0,
+        "deploymentComplexityScore": 30
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "gpt-oss-120b",
+      "displayName": "GPT-OSS-120B",
+      "file": "modelo-gpt-oss-120b.json",
+      "sourceUrl": "https://huggingface.co/openai/gpt-oss-120b/resolve/main/config.json",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 131072,
+        "layers": 36,
+        "hiddenSize": 2880,
+        "attentionHeads": 64,
+        "kvHeads": 8,
+        "headDim": 64,
+        "vocabSize": 201088,
+        "hasVision": false,
+        "isMoE": true,
+        "totalExperts": 128,
+        "activeExpertsPerToken": 4,
+        "architecture": "GptOssForCausalLM",
+        "modelType": "gpt_oss"
+      },
+      "scores": {
+        "contextScore": 6,
+        "widthScore": 12,
+        "depthScore": 23,
+        "attentionScore": 48,
+        "kvEfficiencyScore": 88,
+        "moeScore": 24,
+        "multimodalScore": 0,
+        "deploymentComplexityScore": 46.8
+      },
+      "missingFields": [
+        "torch_dtype"
+      ]
+    },
+    {
+      "slug": "llama-4-scout-17b-16e",
+      "displayName": "Llama 4 Scout 17B",
+      "file": "modelo-llama-4-scout-17b-16e.json",
+      "sourceUrl": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.033Z",
+      "isFallback": true,
+      "metrics": {
+        "contextWindowTokens": 10485760,
+        "layers": 48,
+        "hiddenSize": 5120,
+        "attentionHeads": 40,
+        "kvHeads": 8,
+        "headDim": 128,
+        "vocabSize": 202048,
+        "hasVision": true,
+        "isMoE": true,
+        "totalExperts": 16,
+        "activeExpertsPerToken": 1,
+        "dtype": "bfloat16",
+        "architecture": "Llama4ForConditionalGeneration",
+        "modelType": "llama4"
+      },
+      "scores": {
+        "contextScore": 100,
+        "widthScore": 27,
+        "depthScore": 33,
+        "attentionScore": 29,
+        "kvEfficiencyScore": 80,
+        "moeScore": 2,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 31.4
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "qwen3-5-397b-a17b",
+      "displayName": "Qwen3.5-397B-A17B",
+      "file": "modelo-qwen3-5-397b-a17b.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.597Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 262144,
+        "layers": 60,
+        "hiddenSize": 4096,
+        "attentionHeads": 32,
+        "kvHeads": 2,
+        "headDim": 256,
+        "vocabSize": 248320,
+        "hasVision": true,
+        "isMoE": true,
+        "totalExperts": 512,
+        "activeExpertsPerToken": 10,
+        "dtype": "bfloat16",
+        "architecture": "Qwen3_5MoeForConditionalGeneration",
+        "modelType": "qwen3_5_moe"
+      },
+      "scores": {
+        "contextScore": 12,
+        "widthScore": 20,
+        "depthScore": 43,
+        "attentionScore": 23,
+        "kvEfficiencyScore": 94,
+        "moeScore": 100,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 100
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "qwen3-6-27b",
+      "displayName": "Qwen3.6-27B",
+      "file": "modelo-qwen3-6-27b.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-27B/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:40.438Z",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 262144,
+        "layers": 64,
+        "hiddenSize": 5120,
+        "attentionHeads": 24,
+        "kvHeads": 4,
+        "headDim": 256,
+        "vocabSize": 248320,
+        "hasVision": true,
+        "isMoE": false,
+        "dtype": "bfloat16",
+        "architecture": "Qwen3_5ForConditionalGeneration",
+        "modelType": "qwen3_5"
+      },
+      "scores": {
+        "contextScore": 12,
+        "widthScore": 27,
+        "depthScore": 47,
+        "attentionScore": 16,
+        "kvEfficiencyScore": 83,
+        "moeScore": 0,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 27
+      },
+      "missingFields": []
+    },
+    {
+      "slug": "Qwen3.6-35B-A3B",
+      "displayName": "Qwen3.6-35B-A3B",
+      "file": "modelo-Qwen3.6-35B-A3B.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/resolve/main/config.json",
+      "isFallback": false,
+      "metrics": {
+        "contextWindowTokens": 262144,
+        "layers": 40,
+        "hiddenSize": 2048,
+        "attentionHeads": 16,
+        "kvHeads": 2,
+        "headDim": 256,
+        "vocabSize": 248320,
+        "hasVision": true,
+        "isMoE": true,
+        "totalExperts": 256,
+        "activeExpertsPerToken": 8,
+        "dtype": "bfloat16",
+        "architecture": "Qwen3_5MoeForConditionalGeneration",
+        "modelType": "qwen3_5_moe"
+      },
+      "scores": {
+        "contextScore": 12,
+        "widthScore": 7,
+        "depthScore": 27,
+        "attentionScore": 10,
+        "kvEfficiencyScore": 88,
+        "moeScore": 50,
+        "multimodalScore": 100,
+        "deploymentComplexityScore": 65
+      },
+      "missingFields": []
+    }
+  ]
+}

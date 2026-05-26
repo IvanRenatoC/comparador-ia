@@ -1,0 +1,152 @@
+{
+  "generatedAt": "2026-05-26T03:06:47.770Z",
+  "baselineSlug": "gpt-oss-120b",
+  "baselineDisplayName": "GPT-OSS-120B",
+  "items": {
+    "deepseek-v4-flash": {
+      "wins": [
+        "Ventana de contexto: 1.0M tokens vs 131k tokens del base — 700% mayor según config.",
+        "Capas de transformador: 43 vs 36 del base — 19% mayor según config.",
+        "Dimensión oculta (hidden size): 4k vs 3k del base — 42% mayor según config.",
+        "Cabezas KV: 1 vs 8 del base — 88% menor según config."
+      ],
+      "losses": [
+        "Vocabulario: 129k tokens vs 201k tokens del base — 36% menor que la base según config."
+      ],
+      "ties": [
+        "Cabezas de atención: similar en ambos modelos (64 vs 64).",
+        "Expertos totales MoE: no declarado en este modelo (base: 128)."
+      ],
+      "missingInfo": [],
+      "summary": "DeepSeek V4-Flash vs GPT-OSS-120B: ventaja en 4 dimensión(es), desventaja en 1 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "deepseek-v4-pro": {
+      "wins": [
+        "Ventana de contexto: 1.0M tokens vs 131k tokens del base — 700% mayor según config.",
+        "Capas de transformador: 61 vs 36 del base — 69% mayor según config.",
+        "Dimensión oculta (hidden size): 7k vs 3k del base — 149% mayor según config.",
+        "Cabezas de atención: 128 vs 64 del base — 100% mayor según config.",
+        "Cabezas KV: 1 vs 8 del base — 88% menor según config."
+      ],
+      "losses": [
+        "Vocabulario: 129k tokens vs 201k tokens del base — 36% menor que la base según config."
+      ],
+      "ties": [
+        "Expertos totales MoE: no declarado en este modelo (base: 128)."
+      ],
+      "missingInfo": [],
+      "summary": "DeepSeek V4-Pro vs GPT-OSS-120B: ventaja en 5 dimensión(es), desventaja en 1 dimensión(es), 1 dimensión(es) similares, según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "gemma-4-31b-it": {
+      "wins": [
+        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
+        "Capas de transformador: 60 vs 36 del base — 67% mayor según config.",
+        "Dimensión oculta (hidden size): 5k vs 3k del base — 87% mayor según config.",
+        "Vocabulario: 262k tokens vs 201k tokens del base — 30% mayor según config.",
+        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      ],
+      "losses": [
+        "Cabezas de atención: 32 vs 64 del base — 50% menor que la base según config.",
+        "Cabezas KV: 16 vs 8 del base — 100% mayor que la base según config.",
+        "El modelo base tiene arquitectura MoE (128 expertos, 4 activos/token); este modelo es denso."
+      ],
+      "ties": [],
+      "missingInfo": [],
+      "summary": "Gemma 4 31B-IT vs GPT-OSS-120B: ventaja en 5 dimensión(es), desventaja en 3 dimensión(es), según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "glm-5-1": {
+      "wins": [
+        "Ventana de contexto: 203k tokens vs 131k tokens del base — 55% mayor según config.",
+        "Capas de transformador: 78 vs 36 del base — 117% mayor según config.",
+        "Dimensión oculta (hidden size): 6k vs 3k del base — 113% mayor según config."
+      ],
+      "losses": [
+        "Cabezas KV: 64 vs 8 del base — 700% mayor que la base según config.",
+        "Vocabulario: 155k tokens vs 201k tokens del base — 23% menor que la base según config."
+      ],
+      "ties": [
+        "Cabezas de atención: similar en ambos modelos (64 vs 64).",
+        "Expertos totales MoE: no declarado en este modelo (base: 128)."
+      ],
+      "missingInfo": [],
+      "summary": "GLM-5.1 vs GPT-OSS-120B: ventaja en 3 dimensión(es), desventaja en 2 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "llama-4-scout-17b-16e": {
+      "wins": [
+        "Ventana de contexto: 10.5M tokens vs 131k tokens del base — 7900% mayor según config.",
+        "Capas de transformador: 48 vs 36 del base — 33% mayor según config.",
+        "Dimensión oculta (hidden size): 5k vs 3k del base — 78% mayor según config.",
+        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      ],
+      "losses": [
+        "Cabezas de atención: 40 vs 64 del base — 38% menor que la base según config.",
+        "Expertos totales MoE: 16 vs 128 del base — 88% menor que la base según config."
+      ],
+      "ties": [
+        "Cabezas KV: similar en ambos modelos (8 vs 8).",
+        "Vocabulario: similar en ambos modelos (201k tokens vs 202k tokens)."
+      ],
+      "missingInfo": [],
+      "summary": "Llama 4 Scout 17B vs GPT-OSS-120B: ventaja en 4 dimensión(es), desventaja en 2 dimensión(es), 2 dimensión(es) similares, según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "qwen3-5-397b-a17b": {
+      "wins": [
+        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
+        "Capas de transformador: 60 vs 36 del base — 67% mayor según config.",
+        "Dimensión oculta (hidden size): 4k vs 3k del base — 42% mayor según config.",
+        "Cabezas KV: 2 vs 8 del base — 75% menor según config.",
+        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
+        "Expertos totales MoE: 512 vs 128 del base — 300% mayor según config.",
+        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      ],
+      "losses": [
+        "Cabezas de atención: 32 vs 64 del base — 50% menor que la base según config."
+      ],
+      "ties": [],
+      "missingInfo": [],
+      "summary": "Qwen3.5-397B-A17B vs GPT-OSS-120B: ventaja en 7 dimensión(es), desventaja en 1 dimensión(es), según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "qwen3-6-27b": {
+      "wins": [
+        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
+        "Capas de transformador: 64 vs 36 del base — 78% mayor según config.",
+        "Dimensión oculta (hidden size): 5k vs 3k del base — 78% mayor según config.",
+        "Cabezas KV: 4 vs 8 del base — 50% menor según config.",
+        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
+        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      ],
+      "losses": [
+        "Cabezas de atención: 24 vs 64 del base — 63% menor que la base según config.",
+        "El modelo base tiene arquitectura MoE (128 expertos, 4 activos/token); este modelo es denso."
+      ],
+      "ties": [],
+      "missingInfo": [],
+      "summary": "Qwen3.6-27B vs GPT-OSS-120B: ventaja en 6 dimensión(es), desventaja en 2 dimensión(es), según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    },
+    "Qwen3.6-35B-A3B": {
+      "wins": [
+        "Ventana de contexto: 262k tokens vs 131k tokens del base — 100% mayor según config.",
+        "Capas de transformador: 40 vs 36 del base — 11% mayor según config.",
+        "Cabezas KV: 2 vs 8 del base — 75% menor según config.",
+        "Vocabulario: 248k tokens vs 201k tokens del base — 23% mayor según config.",
+        "Expertos totales MoE: 256 vs 128 del base — 100% mayor según config.",
+        "Multimodal: declara vision_config, lo que indica soporte de visión. El modelo base no tiene este bloque."
+      ],
+      "losses": [
+        "Dimensión oculta (hidden size): 2k vs 3k del base — 29% menor que la base según config.",
+        "Cabezas de atención: 16 vs 64 del base — 75% menor que la base según config."
+      ],
+      "ties": [],
+      "missingInfo": [],
+      "summary": "Qwen3.6-35B-A3B vs GPT-OSS-120B: ventaja en 6 dimensión(es), desventaja en 2 dimensión(es), según arquitectura declarada en config.json.",
+      "methodologyWarning": "Este análisis se basa en los campos declarados en config.json de cada modelo. No refleja benchmarks empíricos (MMLU, HumanEval, GPQA, etc.) ni desempeño real en producción."
+    }
+  }
+}

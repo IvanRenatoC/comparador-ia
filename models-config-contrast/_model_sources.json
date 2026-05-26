@@ -1,0 +1,76 @@
+{
+  "models": [
+    {
+      "displayName": "Gemma 4 31B-IT",
+      "repoId": "google/gemma-4-31B-it",
+      "file": "modelo-gemma-4-31b-it.json",
+      "sourceUrl": "https://huggingface.co/google/gemma-4-31B-it/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:40.058Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "Qwen3.6-27B",
+      "repoId": "Qwen/Qwen3.6-27B",
+      "file": "modelo-qwen3-6-27b.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-27B/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:40.438Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "Llama 4 Scout 17B",
+      "repoId": "unsloth/Llama-4-Scout-17B-16E-Instruct",
+      "file": "modelo-llama-4-scout-17b-16e.json",
+      "sourceUrl": "https://huggingface.co/unsloth/Llama-4-Scout-17B-16E-Instruct/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.033Z",
+      "status": "ok",
+      "isFallback": true,
+      "fallbackNote": "Fallback desde unsloth — repo original requiere acceso gated"
+    },
+    {
+      "displayName": "DeepSeek V4-Flash",
+      "repoId": "deepseek-ai/DeepSeek-V4-Flash",
+      "file": "modelo-deepseek-v4-flash.json",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.226Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "Qwen3.5-397B-A17B",
+      "repoId": "Qwen/Qwen3.5-397B-A17B",
+      "file": "modelo-qwen3-5-397b-a17b.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.5-397B-A17B/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.597Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "GLM-5.1",
+      "repoId": "zai-org/GLM-5.1",
+      "file": "modelo-glm-5-1.json",
+      "sourceUrl": "https://huggingface.co/zai-org/GLM-5.1/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:41.813Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "DeepSeek V4-Pro",
+      "repoId": "deepseek-ai/DeepSeek-V4-Pro",
+      "file": "modelo-deepseek-v4-pro.json",
+      "sourceUrl": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/resolve/main/config.json",
+      "downloadedAt": "2026-05-26T03:00:42.017Z",
+      "status": "ok"
+    },
+    {
+      "displayName": "GPT-OSS-120B",
+      "repoId": "openai/gpt-oss-120b",
+      "file": "modelo-gpt-oss-120b.json",
+      "sourceUrl": "https://huggingface.co/openai/gpt-oss-120b/resolve/main/config.json",
+      "status": "ok"
+    },
+    {
+      "displayName": "Qwen3.6-35B-A3B",
+      "repoId": "Qwen/Qwen3.6-35B-A3B",
+      "file": "modelo-Qwen3.6-35B-A3B.json",
+      "sourceUrl": "https://huggingface.co/Qwen/Qwen3.6-35B-A3B/resolve/main/config.json",
+      "status": "ok"
+    }
+  ]
+}
