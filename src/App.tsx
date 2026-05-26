@@ -163,7 +163,7 @@ export default function App() {
                 <span>{allModels.length} modelos en total</span>
                 <span>·</span>
                 <span className="flex items-center gap-1">
-                  <CollectionBadge collection="contrast" /> {contrastCount} curados
+                  <CollectionBadge collection="contrast" /> {contrastCount} candidatos fuertes
                 </span>
                 <span className="flex items-center gap-1">
                   <CollectionBadge collection="test" /> {testCount} candidatos
