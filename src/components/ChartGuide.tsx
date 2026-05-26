@@ -41,34 +41,34 @@ export default function ChartGuide() {
     <div>
       <button
         onClick={() => setOpen(v => !v)}
-        className="flex items-center gap-2 text-[11px] font-mono text-[#f5f6f7] hover:text-[#00d4ff] transition-colors w-full"
+        className="flex items-center gap-2 text-[11px] font-mono text-[#334155] dark:text-[#f5f6f7] hover:text-[#00d4ff] transition-colors w-full"
       >
-        <span className="border border-[#1e2d45] rounded px-2 py-0.5 text-[10px] font-mono">
+        <span className="border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-2 py-0.5 text-[10px] font-mono">
           {open ? '▲' : '▼'}
         </span>
         <span>Cómo interpretar los gráficos</span>
-        <span className="flex-1 h-px bg-[#1e2d45] ml-2" />
+        <span className="flex-1 h-px bg-[#e2e8f0] dark:bg-[#1e2d45] ml-2" />
       </button>
 
       {open && (
-        <div className="mt-3 bg-[#111827] border border-[#1e2d45] rounded-lg overflow-hidden">
-          <div className="divide-y divide-[#1e2d45]">
+        <div className="mt-3 bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg overflow-hidden">
+          <div className="divide-y divide-[#e2e8f0] dark:divide-[#1e2d45]">
             {SECTIONS.map(s => (
-              <div key={s.key} className="hover:bg-[#0d1220] transition-colors">
+              <div key={s.key} className="hover:bg-[#f1f5f9] dark:hover:bg-[#0d1220] transition-colors">
                 <button
                   onClick={() => setExpanded(expanded === s.key ? null : s.key)}
                   className="w-full flex items-start gap-3 px-4 py-3 text-left"
                 >
-                  <span className="text-[10px] font-mono text-[#f5f6f7] mt-0.5 shrink-0">
+                  <span className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] mt-0.5 shrink-0">
                     {expanded === s.key ? '▼' : '▶'}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-[11px] font-mono text-[#e2e8f0]">{s.label}</div>
-                    <div className="text-[11px] text-[#f5f6f7] mt-0.5">{s.short}</div>
+                    <div className="text-[11px] font-mono text-[#0f172a] dark:text-[#e2e8f0]">{s.label}</div>
+                    <div className="text-[11px] text-[#334155] dark:text-[#f5f6f7] mt-0.5">{s.short}</div>
                   </div>
                 </button>
                 {expanded === s.key && (
-                  <div className="px-9 pb-3 text-[11px] text-[#f5f6f7] leading-relaxed border-t border-[#1e2d45]/50 pt-2 bg-[#080b14]">
+                  <div className="px-9 pb-3 text-[11px] text-[#334155] dark:text-[#f5f6f7] leading-relaxed border-t border-[#e2e8f0] dark:border-[#1e2d45]/50 pt-2 bg-white dark:bg-[#080b14]">
                     {s.detail}
                   </div>
                 )}

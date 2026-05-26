@@ -13,18 +13,18 @@ export default function RawConfigViewer({ model, rawConfig }: Props) {
     <div>
       <button
         onClick={() => setOpen(v => !v)}
-        className="flex items-center gap-2 text-[11px] font-mono text-[#f5f6f7] hover:text-[#00d4ff] transition-colors"
+        className="flex items-center gap-2 text-[11px] font-mono text-[#334155] dark:text-[#f5f6f7] hover:text-[#00d4ff] transition-colors"
       >
-        <span className="border border-[#1e2d45] rounded px-2 py-0.5 font-mono text-[10px]">
+        <span className="border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-2 py-0.5 font-mono text-[10px]">
           {open ? '▲' : '▼'}
         </span>
         {open ? 'Ocultar' : 'Ver'} config.json de {model.displayName}
       </button>
 
       {open && (
-        <div className="mt-3 bg-[#080b14] border border-[#1e2d45] rounded-lg overflow-hidden">
-          <div className="flex items-center justify-between px-4 py-2 border-b border-[#1e2d45] bg-[#0d1220]">
-            <span className="text-[10px] font-mono text-[#f5f6f7]">
+        <div className="mt-3 bg-white dark:bg-[#080b14] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg overflow-hidden">
+          <div className="flex items-center justify-between px-4 py-2 border-b border-[#e2e8f0] dark:border-[#1e2d45] bg-[#f1f5f9] dark:bg-[#0d1220]">
+            <span className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7]">
               {model.file} — {model.sourceUrl ?? 'fuente manual'}
             </span>
             {rawConfig && (
@@ -44,7 +44,7 @@ export default function RawConfigViewer({ model, rawConfig }: Props) {
               </button>
             )}
           </div>
-          <pre className="text-[10px] font-mono text-[#f5f6f7] p-4 overflow-auto max-h-80 leading-relaxed whitespace-pre">
+          <pre className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] p-4 overflow-auto max-h-80 leading-relaxed whitespace-pre">
             {rawConfig ? JSON.stringify(rawConfig, null, 2) : '(config no disponible en este contexto)'}
           </pre>
         </div>

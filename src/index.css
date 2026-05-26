@@ -2,22 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ── LIGHT MODE (default) ── */
 :root {
-  --bg-base: #080b14;
-  --bg-surface: #0d1220;
-  --bg-card: #111827;
-  --bg-elevated: #1a2235;
+  --bg-base: #ffffff;
+  --bg-surface: #f1f5f9;
+  --bg-card: #f8fafc;
+  --bg-elevated: #e8edf4;
   --accent-cyan: #00d4ff;
   --accent-blue: #3b82f6;
   --accent-violet: #8b5cf6;
   --accent-emerald: #10b981;
   --accent-amber: #f59e0b;
   --accent-rose: #f43f5e;
+  --border-dim: #e2e8f0;
+  --border-bright: #cbd5e1;
+  --text-primary: #0f172a;
+  --text-secondary: #1e293b;
+  --text-muted: #334155;
+  --chart-text: #4b5e7a;
+  --chart-text-soft: #64748b;
+  --chart-text-min: #94a3b8;
+  --chart-grid: #e2e8f0;
+  --grid-color: rgba(100, 116, 139, 0.06);
+}
+
+/* ── DARK MODE ── */
+.dark {
+  --bg-base: #080b14;
+  --bg-surface: #0d1220;
+  --bg-card: #111827;
+  --bg-elevated: #1a2235;
   --border-dim: #1e2d45;
   --border-bright: #2d4060;
   --text-primary: #e2e8f0;
   --text-secondary: #f5f6f7;
   --text-muted: #f5f6f7;
+  --chart-text: #f5f6f7;
+  --chart-text-soft: #e2e8f0;
+  --chart-text-min: #f5f6f7;
+  --chart-grid: #1e2d45;
+  --grid-color: rgba(0, 212, 255, 0.025);
 }
 
 * {
@@ -36,6 +60,7 @@ body {
   font-family: 'IBM Plex Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Grid texture overlay */
@@ -44,8 +69,8 @@ body::before {
   position: fixed;
   inset: 0;
   background-image:
-    linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
   background-size: 40px 40px;
   pointer-events: none;
   z-index: 0;

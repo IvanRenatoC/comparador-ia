@@ -84,21 +84,21 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-[#0d1220] border border-[#2d4060] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-auto shadow-2xl">
+      <div className="relative bg-[#f1f5f9] dark:bg-[#0d1220] border border-[#cbd5e1] dark:border-[#2d4060] rounded-xl w-full max-w-2xl max-h-[90vh] overflow-auto shadow-2xl">
 
-        <div className="flex items-center justify-between px-5 py-4 border-b border-[#1e2d45] sticky top-0 bg-[#0d1220] z-10">
+        <div className="flex items-center justify-between px-5 py-4 border-b border-[#e2e8f0] dark:border-[#1e2d45] sticky top-0 bg-[#f1f5f9] dark:bg-[#0d1220] z-10">
           <div>
-            <h2 className="text-sm font-mono font-bold text-[#e2e8f0]">Agregar modelo por config.json</h2>
+            <h2 className="text-sm font-mono font-bold text-[#0f172a] dark:text-[#e2e8f0]">Agregar modelo por config.json</h2>
             <p className="text-[10px] text-[#f59e0b] font-mono mt-0.5">
               ⚠ Este modelo se agrega temporalmente en tu navegador. Para dejarlo permanente, agrega el config.json al repo y vuelve a desplegar.
             </p>
           </div>
-          <button onClick={onClose} className="text-[#f5f6f7] hover:text-[#e2e8f0] transition-colors font-mono text-lg leading-none">×</button>
+          <button onClick={onClose} className="text-[#334155] dark:text-[#f5f6f7] hover:text-[#0f172a] dark:hover:text-[#e2e8f0] transition-colors font-mono text-lg leading-none">×</button>
         </div>
 
         <div className="p-5 space-y-4">
           <div>
-            <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] block mb-1.5">
+            <label className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] block mb-1.5">
               Nombre visible del modelo
             </label>
             <input
@@ -106,15 +106,15 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
               value={displayName}
               onChange={e => setDisplayName(e.target.value)}
               placeholder="ej: Llama 3.1 8B Custom"
-              className="w-full bg-[#111827] border border-[#1e2d45] rounded px-3 py-2 text-sm font-mono text-[#e2e8f0] focus:outline-none focus:border-[#00d4ff] transition-colors placeholder:text-[#4b5e7a]"
+              className="w-full bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-3 py-2 text-sm font-mono text-[#0f172a] dark:text-[#e2e8f0] focus:outline-none focus:border-[#00d4ff] transition-colors placeholder:text-[#94a3b8] dark:placeholder:text-[#4b5e7a]"
             />
             {displayName && (
-              <p className="text-[10px] font-mono text-[#f5f6f7] mt-1">Slug: custom-{slugify(displayName)}</p>
+              <p className="text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] mt-1">Slug: custom-{slugify(displayName)}</p>
             )}
           </div>
 
           <div>
-            <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] block mb-1.5">
+            <label className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] block mb-1.5">
               Contenido del config.json
             </label>
             <textarea
@@ -122,7 +122,7 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
               onChange={e => setJsonText(e.target.value)}
               placeholder={'{\n  "model_type": "llama",\n  "hidden_size": 4096,\n  ...\n}'}
               rows={10}
-              className="w-full bg-[#080b14] border border-[#1e2d45] rounded px-3 py-2 text-[11px] font-mono text-[#f5f6f7] focus:outline-none focus:border-[#00d4ff] transition-colors resize-y placeholder:text-[#2d4060]"
+              className="w-full bg-white dark:bg-[#080b14] border border-[#e2e8f0] dark:border-[#1e2d45] rounded px-3 py-2 text-[11px] font-mono text-[#334155] dark:text-[#f5f6f7] focus:outline-none focus:border-[#00d4ff] transition-colors resize-y placeholder:text-[#94a3b8] dark:placeholder:text-[#2d4060]"
             />
           </div>
 
@@ -134,13 +134,13 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
 
           <button
             onClick={validate}
-            className="w-full bg-[#1a2235] border border-[#2d4060] rounded px-4 py-2.5 text-[12px] font-mono text-[#00d4ff] hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
+            className="w-full bg-[#e8edf4] dark:bg-[#1a2235] border border-[#cbd5e1] dark:border-[#2d4060] rounded px-4 py-2.5 text-[12px] font-mono text-[#00d4ff] hover:bg-[#00d4ff]/10 hover:border-[#00d4ff] transition-all"
           >
             Validar y previsualizar métricas
           </button>
 
           {preview && (
-            <div className="bg-[#080b14] border border-[#10b981]/30 rounded-lg p-4 space-y-3">
+            <div className="bg-white dark:bg-[#080b14] border border-[#10b981]/30 rounded-lg p-4 space-y-3">
               <div className="flex items-center gap-2 text-[10px] font-mono text-[#10b981]">
                 <span>✓</span><span>JSON válido — métricas extraídas</span>
               </div>
@@ -156,8 +156,8 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
                   ['Visión', preview.metrics.hasVision ? 'Sí' : 'No'],
                   ['Dtype', preview.metrics.dtype ?? '—'],
                 ] as [string, string][]).map(([k, v]) => (
-                  <div key={k} className="bg-[#111827] rounded p-2">
-                    <div className="text-[9px] text-[#f5f6f7] font-mono">{k}</div>
+                  <div key={k} className="bg-[#f8fafc] dark:bg-[#111827] rounded p-2">
+                    <div className="text-[9px] text-[#334155] dark:text-[#f5f6f7] font-mono">{k}</div>
                     <div className="text-[11px] text-[#00d4ff] font-mono font-bold mt-0.5">{v}</div>
                   </div>
                 ))}
@@ -176,16 +176,16 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
                 </button>
                 <button
                   onClick={downloadJson}
-                  className="bg-[#1a2235] border border-[#2d4060] rounded px-4 py-2 text-[12px] font-mono text-[#f5f6f7] hover:text-[#e2e8f0] transition-all"
+                  className="bg-[#e8edf4] dark:bg-[#1a2235] border border-[#cbd5e1] dark:border-[#2d4060] rounded px-4 py-2 text-[12px] font-mono text-[#334155] dark:text-[#f5f6f7] hover:text-[#0f172a] dark:hover:text-[#e2e8f0] transition-all"
                 >
                   ↓ Descargar JSON
                 </button>
               </div>
-              <div className="bg-[#111827] rounded p-3 text-[10px] font-mono text-[#f5f6f7] leading-relaxed">
+              <div className="bg-[#f8fafc] dark:bg-[#111827] rounded p-3 text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] leading-relaxed">
                 <div className="text-[#f59e0b] mb-1">Para agregar permanentemente al repo:</div>
-                <div className="text-[#f5f6f7]">1. Descarga el JSON y cópialo en <span className="text-[#e2e8f0]">models-config-test/</span></div>
-                <div className="text-[#f5f6f7]">2. Ejecuta: <span className="text-[#e2e8f0]">npm run prepare:data</span></div>
-                <div className="text-[#f5f6f7]">3. Ejecuta: <span className="text-[#e2e8f0]">npm run build</span> y redespliega</div>
+                <div>1. Descarga el JSON y cópialo en <span className="text-[#0f172a] dark:text-[#e2e8f0]">models-config-test/</span></div>
+                <div>2. Ejecuta: <span className="text-[#0f172a] dark:text-[#e2e8f0]">npm run prepare:data</span></div>
+                <div>3. Ejecuta: <span className="text-[#0f172a] dark:text-[#e2e8f0]">npm run build</span> y redespliega</div>
               </div>
             </div>
           )}
