@@ -76,7 +76,7 @@ export default function BarCharts({ base, cmp }: Props) {
         <div className="flex items-center gap-4 mb-4 text-[11px] font-mono">
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-sm bg-[#3b82f6] inline-block" />
-            <span className="text-[#94a3b8]">{base.displayName}</span>
+            <span className="text-[#b6c2d2]">{base.displayName}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-3 rounded-sm bg-[#00d4ff] inline-block" />
@@ -88,7 +88,7 @@ export default function BarCharts({ base, cmp }: Props) {
             <CartesianGrid strokeDasharray="2 4" stroke="#1e2d45" vertical={false} />
             <XAxis
               dataKey="metric"
-              tick={{ fill: '#4b5e7a', fontSize: 9, fontFamily: 'Space Mono' }}
+              tick={{ fill: '#9fb2cc', fontSize: 11, fontFamily: 'Space Mono' }}
               angle={-35}
               textAnchor="end"
               interval={0}
@@ -96,7 +96,7 @@ export default function BarCharts({ base, cmp }: Props) {
               axisLine={{ stroke: '#1e2d45' }}
             />
             <YAxis
-              tick={{ fill: '#4b5e7a', fontSize: 9, fontFamily: 'Space Mono' }}
+              tick={{ fill: '#9fb2cc', fontSize: 11, fontFamily: 'Space Mono' }}
               tickLine={false}
               axisLine={false}
               tickFormatter={v => fmt(v)}
@@ -104,15 +104,15 @@ export default function BarCharts({ base, cmp }: Props) {
             <Tooltip content={<CustomTooltip />} />
             <Bar dataKey="base" name={base.displayName} fill="#3b82f6" radius={[2, 2, 0, 0]}>
               {data.map((_, i) => <Cell key={i} fill="#3b82f6" fillOpacity={0.7} />)}
-              <LabelList dataKey="baseLabel" position="top" style={{ fill: '#4b5e7a', fontSize: 8, fontFamily: 'Space Mono' }} />
+              <LabelList dataKey="baseLabel" position="top" style={{ fill: '#9fb2cc', fontSize: 11, fontFamily: 'Space Mono' }} />
             </Bar>
             <Bar dataKey="cmp" name={cmp.displayName} fill="#00d4ff" radius={[2, 2, 0, 0]}>
               {data.map((_, i) => <Cell key={i} fill="#00d4ff" fillOpacity={0.8} />)}
-              <LabelList dataKey="cmpLabel" position="top" style={{ fill: '#00d4ff', fontSize: 8, fontFamily: 'Space Mono' }} />
+              <LabelList dataKey="cmpLabel" position="top" style={{ fill: '#00d4ff', fontSize: 11, fontFamily: 'Space Mono' }} />
             </Bar>
           </BarChart>
         </ResponsiveContainer>
-        <p className="text-[9px] text-[#4b5e7a] font-mono mt-2 text-center">
+        <p className="text-[10px] text-[#8fa3bf] font-mono mt-2 text-center">
           * Valores derivados de config.json. No representan benchmark empírico.
         </p>
       </div>

@@ -49,7 +49,7 @@ export default function RadarChartComp({ base, cmp }: Props) {
         <div className="flex items-center gap-4 mb-2 text-[11px] font-mono justify-center">
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-0.5 bg-[#3b82f6] inline-block" />
-            <span className="text-[#94a3b8]">{base.displayName}</span>
+            <span className="text-[#b6c2d2]">{base.displayName}</span>
           </div>
           <div className="flex items-center gap-1.5">
             <span className="w-3 h-0.5 bg-[#00d4ff] inline-block" />
@@ -57,18 +57,18 @@ export default function RadarChartComp({ base, cmp }: Props) {
           </div>
         </div>
         <ResponsiveContainer width="100%" height={280}>
-          <RadarChart data={data} margin={{ top: 10, right: 30, bottom: 10, left: 30 }}>
+          <RadarChart data={data} margin={{ top: 10, right: 40, bottom: 10, left: 40 }}>
             <PolarGrid stroke="#1e2d45" />
             <PolarAngleAxis
               dataKey="axis"
-              tick={{ fill: '#4b5e7a', fontSize: 10, fontFamily: 'Space Mono' }}
+              tick={{ fill: '#9fb2cc', fontSize: 12, fontFamily: 'Space Mono' }}
             />
             <Tooltip content={<CustomTooltip />} />
             <Radar name={base.displayName} dataKey="base" stroke="#3b82f6" fill="#3b82f6" fillOpacity={0.15} strokeWidth={1.5} />
             <Radar name={cmp.displayName} dataKey="cmp" stroke="#00d4ff" fill="#00d4ff" fillOpacity={0.2} strokeWidth={2} />
           </RadarChart>
         </ResponsiveContainer>
-        <p className="text-[9px] text-[#4b5e7a] font-mono mt-1 text-center">
+        <p className="text-[10px] text-[#8fa3bf] font-mono mt-1 text-center">
           Scores heurísticos para visualización. No son benchmarks.
         </p>
       </div>

@@ -119,7 +119,7 @@ export default function ComparisonTable({ base, cmp }: Props) {
   ]
 
   const arrows = { up: '↑', down: '↓', neutral: '≈' }
-  const arrowColors = { up: '#10b981', down: '#f43f5e', neutral: '#4b5e7a' }
+  const arrowColors = { up: '#10b981', down: '#f43f5e', neutral: '#8fa3bf' }
 
   return (
     <div>
@@ -128,23 +128,23 @@ export default function ComparisonTable({ base, cmp }: Props) {
       </div>
       <div className="bg-[#111827] border border-[#1e2d45] rounded-lg overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-[11px] font-mono">
+          <table className="w-full text-[12px] font-mono">
             <thead>
               <tr className="border-b border-[#1e2d45] bg-[#0d1220]">
-                <th className="text-left px-4 py-2.5 text-[#4b5e7a] tracking-widest uppercase text-[9px] w-36">Métrica</th>
-                <th className="text-left px-4 py-2.5 text-[#3b82f6] tracking-widest uppercase text-[9px]">{base.displayName}</th>
-                <th className="text-left px-4 py-2.5 text-[#00d4ff] tracking-widest uppercase text-[9px]">{cmp.displayName}</th>
-                <th className="text-left px-4 py-2.5 text-[9px] text-[#4b5e7a] tracking-widest uppercase hidden lg:table-cell">Interpretación</th>
-                <th className="px-4 py-2.5 text-[9px] text-[#4b5e7a] tracking-widest uppercase text-center w-8">Δ</th>
+                <th className="text-left px-4 py-2.5 text-[#8fa3bf] tracking-widest uppercase text-[10px] w-36">Métrica</th>
+                <th className="text-left px-4 py-2.5 text-[#3b82f6] tracking-widest uppercase text-[10px]">{base.displayName}</th>
+                <th className="text-left px-4 py-2.5 text-[#00d4ff] tracking-widest uppercase text-[10px]">{cmp.displayName}</th>
+                <th className="text-left px-4 py-2.5 text-[10px] text-[#8fa3bf] tracking-widest uppercase hidden lg:table-cell">Interpretación</th>
+                <th className="px-4 py-2.5 text-[10px] text-[#8fa3bf] tracking-widest uppercase text-center w-8">Δ</th>
               </tr>
             </thead>
             <tbody>
               {rows.map((row, i) => (
                 <tr key={i} className="border-b border-[#1e2d45]/50 hover:bg-[#0d1220]/50 transition-colors">
-                  <td className="px-4 py-2.5 text-[#4b5e7a]">{row.label}</td>
-                  <td className="px-4 py-2.5 text-[#94a3b8]">{row.baseVal}</td>
+                  <td className="px-4 py-2.5 text-[#8fa3bf]">{row.label}</td>
+                  <td className="px-4 py-2.5 text-[#b6c2d2]">{row.baseVal}</td>
                   <td className="px-4 py-2.5 font-bold" style={{ color: '#e2e8f0' }}>{row.cmpVal}</td>
-                  <td className="px-4 py-2.5 text-[#4b5e7a] hidden lg:table-cell leading-relaxed">{row.note}</td>
+                  <td className="px-4 py-2.5 text-[#8fa3bf] hidden lg:table-cell leading-relaxed">{row.note}</td>
                   <td className="px-4 py-2.5 text-center font-bold text-base" style={{ color: arrowColors[row.direction ?? 'neutral'] }}>
                     {arrows[row.direction ?? 'neutral']}
                   </td>
@@ -153,7 +153,7 @@ export default function ComparisonTable({ base, cmp }: Props) {
             </tbody>
           </table>
         </div>
-        <div className="px-4 py-2 bg-[#0d1220] flex gap-4 text-[9px] font-mono text-[#4b5e7a]">
+        <div className="px-4 py-2 bg-[#0d1220] flex gap-4 text-[10px] font-mono text-[#8fa3bf]">
           <span><span className="text-[#10b981]">↑</span> CMP mejor</span>
           <span><span className="text-[#f43f5e]">↓</span> CMP inferior</span>
           <span><span>≈</span> Similar o N/D</span>
