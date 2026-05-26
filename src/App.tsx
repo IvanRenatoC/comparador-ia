@@ -188,6 +188,13 @@ export default function App() {
         {/* Only show comparison sections when models differ */}
         {!isSameModel && (
           <>
+            {/* Executive explanation — first, so the user reads the interpretation before the raw numbers */}
+            {explanation && (
+              <Section title="Análisis comparativo">
+                <ExplanationSection explanation={explanation} nameA={modelA.displayName} nameB={modelB.displayName} />
+              </Section>
+            )}
+
             {/* Metrics cards */}
             <Section title="Métricas clave">
               <MetricsCards base={modelA} cmp={modelB} />
@@ -205,13 +212,6 @@ export default function App() {
             <Section title="Tabla técnica">
               <ComparisonTable base={modelA} cmp={modelB} />
             </Section>
-
-            {/* Executive explanation */}
-            {explanation && (
-              <Section title="Análisis comparativo">
-                <ExplanationSection explanation={explanation} nameA={modelA.displayName} nameB={modelB.displayName} />
-              </Section>
-            )}
 
             {/* Raw config viewers */}
             <Section title="Config raw">
