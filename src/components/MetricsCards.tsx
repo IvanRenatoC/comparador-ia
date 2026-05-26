@@ -18,22 +18,25 @@ function Card({
   const colors = {
     up: '#10b981',
     down: '#f43f5e',
-    null: '#f5f6f7',
-    undefined: '#f5f6f7',
+    null: undefined,
+    undefined: undefined,
   }
-  const c = colors[highlight as keyof typeof colors] ?? '#f5f6f7'
+  const c = colors[highlight as keyof typeof colors]
 
   return (
-    <div className="bg-[#111827] border border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#2d4060] transition-colors">
-      <div className="text-[9px] font-mono tracking-widest uppercase text-[#f5f6f7]">{label}</div>
+    <div className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#cbd5e1] dark:hover:border-[#2d4060] transition-colors">
+      <div className="text-[9px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">{label}</div>
       <div className="flex items-end justify-between gap-2">
         <div>
-          <div className="text-[10px] text-[#f5f6f7] font-mono mb-0.5">BASE</div>
-          <div className="text-sm font-mono text-[#f5f6f7]">{baseVal}{unit}</div>
+          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
+          <div className="text-sm font-mono text-[#1e293b] dark:text-[#f5f6f7]">{baseVal}{unit}</div>
         </div>
         <div className="text-right">
-          <div className="text-[10px] text-[#f5f6f7] font-mono mb-0.5">CMP</div>
-          <div className="text-sm font-mono font-bold" style={{ color: c }}>{cmpVal}{unit}</div>
+          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
+          <div
+            className={`text-sm font-mono font-bold ${!c ? 'text-[#0f172a] dark:text-[#e2e8f0]' : ''}`}
+            style={c ? { color: c } : undefined}
+          >{cmpVal}{unit}</div>
         </div>
       </div>
     </div>
@@ -42,18 +45,18 @@ function Card({
 
 function boolCard(label: string, baseVal: boolean, cmpVal: boolean) {
   return (
-    <div key={label} className="bg-[#111827] border border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#2d4060] transition-colors">
-      <div className="text-[9px] font-mono tracking-widest uppercase text-[#f5f6f7]">{label}</div>
+    <div key={label} className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#cbd5e1] dark:hover:border-[#2d4060] transition-colors">
+      <div className="text-[9px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">{label}</div>
       <div className="flex items-center justify-between gap-2">
         <div>
-          <div className="text-[10px] text-[#f5f6f7] font-mono mb-0.5">BASE</div>
-          <div className={`text-xs font-mono font-bold ${baseVal ? 'text-[#10b981]' : 'text-[#f5f6f7]'}`}>
+          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">BASE</div>
+          <div className={`text-xs font-mono font-bold ${baseVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
             {baseVal ? 'SÍ' : 'NO'}
           </div>
         </div>
         <div className="text-right">
-          <div className="text-[10px] text-[#f5f6f7] font-mono mb-0.5">CMP</div>
-          <div className={`text-xs font-mono font-bold ${cmpVal ? 'text-[#10b981]' : 'text-[#f5f6f7]'}`}>
+          <div className="text-[10px] text-[#334155] dark:text-[#f5f6f7] font-mono mb-0.5">CMP</div>
+          <div className={`text-xs font-mono font-bold ${cmpVal ? 'text-[#10b981]' : 'text-[#334155] dark:text-[#f5f6f7]'}`}>
             {cmpVal ? 'SÍ' : 'NO'}
           </div>
         </div>
@@ -75,7 +78,7 @@ export default function MetricsCards({ base, cmp }: Props) {
 
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] mb-3">
+      <div className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7] mb-3">
         Resumen de métricas clave
       </div>
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2">
@@ -88,10 +91,10 @@ export default function MetricsCards({ base, cmp }: Props) {
         <Card label="Expertos MoE" baseVal={bm.isMoE ? fmt(bm.totalExperts) : 'NO MoE'} cmpVal={cm.isMoE ? fmt(cm.totalExperts) : 'NO MoE'} />
         <Card label="Act./Token" baseVal={bm.isMoE ? fmt(bm.activeExpertsPerToken) : '—'} cmpVal={cm.isMoE ? fmt(cm.activeExpertsPerToken) : '—'} />
         {boolCard('Multimodal', bm.hasVision, cm.hasVision)}
-        <div className="bg-[#111827] border border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#2d4060] transition-colors">
-          <div className="text-[9px] font-mono tracking-widest uppercase text-[#f5f6f7]">Dtype</div>
+        <div className="bg-[#f8fafc] dark:bg-[#111827] border border-[#e2e8f0] dark:border-[#1e2d45] rounded-lg p-3 flex flex-col gap-2 hover:border-[#cbd5e1] dark:hover:border-[#2d4060] transition-colors">
+          <div className="text-[9px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">Dtype</div>
           <div className="flex items-center justify-between gap-1">
-            <div className="text-[9px] font-mono text-[#f5f6f7] truncate">{bm.dtype ?? '—'}</div>
+            <div className="text-[9px] font-mono text-[#334155] dark:text-[#f5f6f7] truncate">{bm.dtype ?? '—'}</div>
             <div className="text-[9px] font-mono font-bold text-[#00d4ff] truncate">{cm.dtype ?? '—'}</div>
           </div>
         </div>

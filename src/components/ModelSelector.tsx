@@ -31,20 +31,20 @@ export default function ModelSelector({ label, models, selected, onChange, color
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7]">
+      <label className="text-[10px] font-mono tracking-widest uppercase text-[#334155] dark:text-[#f5f6f7]">
         {label}
       </label>
       <div className="relative">
         <select
           value={selected}
           onChange={e => onChange(e.target.value)}
-          className="w-full appearance-none bg-[#111827] border rounded px-3 py-2.5 text-sm font-mono text-[#e2e8f0] cursor-pointer focus:outline-none focus:ring-1 pr-8 transition-colors"
+          className="w-full appearance-none bg-[#f8fafc] dark:bg-[#111827] border rounded px-3 py-2.5 text-sm font-mono text-[#0f172a] dark:text-[#e2e8f0] cursor-pointer focus:outline-none focus:ring-1 pr-8 transition-colors"
           style={{ borderColor: color + '40' }}
           onFocus={e => (e.target.style.borderColor = color)}
           onBlur={e => (e.target.style.borderColor = color + '40')}
         >
           {models.map(m => (
-            <option key={m.slug} value={m.slug} style={{ background: '#111827' }}>
+            <option key={m.slug} value={m.slug} style={{ background: 'var(--bg-card)' }}>
               {m.displayName}
               {m.collection === 'contrast' ? ' ★' : ''}
               {m.isFallback ? ' [fb]' : ''}
@@ -58,7 +58,7 @@ export default function ModelSelector({ label, models, selected, onChange, color
         </div>
       </div>
       {selectedModel && (
-        <div className="flex items-center gap-2 text-[10px] font-mono text-[#f5f6f7] bg-[#0d1220] rounded p-2">
+        <div className="flex items-center gap-2 text-[10px] font-mono text-[#334155] dark:text-[#f5f6f7] bg-[#f1f5f9] dark:bg-[#0d1220] rounded p-2">
           <CollectionBadge collection={selectedModel.collection} />
           <span className="truncate">{selectedModel.metrics.modelType ?? '—'}</span>
           {selectedModel.metrics.isMoE && <span className="text-[#8b5cf6]">MoE</span>}
