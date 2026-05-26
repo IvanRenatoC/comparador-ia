@@ -43,7 +43,7 @@
   --chart-text-min: #f5f6f7;
   --chart-grid: #1e2d45;
   --grid-color: rgba(0, 212, 255, 0.025);
-  --color-section-title: #e2e8f0;
+  --color-section-title: rgba(0, 212, 255, 0.6);
 }
 
 * {
