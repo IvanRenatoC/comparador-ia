@@ -31,7 +31,7 @@ export default function ModelSelector({ label, models, selected, onChange, color
 
   return (
     <div className="flex flex-col gap-1.5">
-      <label className="text-[10px] font-mono tracking-widest uppercase text-[#4b5e7a]">
+      <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7]">
         {label}
       </label>
       <div className="relative">
@@ -58,7 +58,7 @@ export default function ModelSelector({ label, models, selected, onChange, color
         </div>
       </div>
       {selectedModel && (
-        <div className="flex items-center gap-2 text-[10px] font-mono text-[#4b5e7a] bg-[#0d1220] rounded p-2">
+        <div className="flex items-center gap-2 text-[10px] font-mono text-[#f5f6f7] bg-[#0d1220] rounded p-2">
           <CollectionBadge collection={selectedModel.collection} />
           <span className="truncate">{selectedModel.metrics.modelType ?? '—'}</span>
           {selectedModel.metrics.isMoE && <span className="text-[#8b5cf6]">MoE</span>}

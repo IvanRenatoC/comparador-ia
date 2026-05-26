@@ -93,12 +93,12 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
               ⚠ Este modelo se agrega temporalmente en tu navegador. Para dejarlo permanente, agrega el config.json al repo y vuelve a desplegar.
             </p>
           </div>
-          <button onClick={onClose} className="text-[#4b5e7a] hover:text-[#e2e8f0] transition-colors font-mono text-lg leading-none">×</button>
+          <button onClick={onClose} className="text-[#f5f6f7] hover:text-[#e2e8f0] transition-colors font-mono text-lg leading-none">×</button>
         </div>
 
         <div className="p-5 space-y-4">
           <div>
-            <label className="text-[10px] font-mono tracking-widest uppercase text-[#4b5e7a] block mb-1.5">
+            <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] block mb-1.5">
               Nombre visible del modelo
             </label>
             <input
@@ -109,12 +109,12 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
               className="w-full bg-[#111827] border border-[#1e2d45] rounded px-3 py-2 text-sm font-mono text-[#e2e8f0] focus:outline-none focus:border-[#00d4ff] transition-colors placeholder:text-[#4b5e7a]"
             />
             {displayName && (
-              <p className="text-[10px] font-mono text-[#4b5e7a] mt-1">Slug: custom-{slugify(displayName)}</p>
+              <p className="text-[10px] font-mono text-[#f5f6f7] mt-1">Slug: custom-{slugify(displayName)}</p>
             )}
           </div>
 
           <div>
-            <label className="text-[10px] font-mono tracking-widest uppercase text-[#4b5e7a] block mb-1.5">
+            <label className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] block mb-1.5">
               Contenido del config.json
             </label>
             <textarea
@@ -122,7 +122,7 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
               onChange={e => setJsonText(e.target.value)}
               placeholder={'{\n  "model_type": "llama",\n  "hidden_size": 4096,\n  ...\n}'}
               rows={10}
-              className="w-full bg-[#080b14] border border-[#1e2d45] rounded px-3 py-2 text-[11px] font-mono text-[#94a3b8] focus:outline-none focus:border-[#00d4ff] transition-colors resize-y placeholder:text-[#2d4060]"
+              className="w-full bg-[#080b14] border border-[#1e2d45] rounded px-3 py-2 text-[11px] font-mono text-[#f5f6f7] focus:outline-none focus:border-[#00d4ff] transition-colors resize-y placeholder:text-[#2d4060]"
             />
           </div>
 
@@ -157,7 +157,7 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
                   ['Dtype', preview.metrics.dtype ?? '—'],
                 ] as [string, string][]).map(([k, v]) => (
                   <div key={k} className="bg-[#111827] rounded p-2">
-                    <div className="text-[9px] text-[#4b5e7a] font-mono">{k}</div>
+                    <div className="text-[9px] text-[#f5f6f7] font-mono">{k}</div>
                     <div className="text-[11px] text-[#00d4ff] font-mono font-bold mt-0.5">{v}</div>
                   </div>
                 ))}
@@ -176,16 +176,16 @@ export default function AddModelModal({ onAdd, onClose }: Props) {
                 </button>
                 <button
                   onClick={downloadJson}
-                  className="bg-[#1a2235] border border-[#2d4060] rounded px-4 py-2 text-[12px] font-mono text-[#94a3b8] hover:text-[#e2e8f0] transition-all"
+                  className="bg-[#1a2235] border border-[#2d4060] rounded px-4 py-2 text-[12px] font-mono text-[#f5f6f7] hover:text-[#e2e8f0] transition-all"
                 >
                   ↓ Descargar JSON
                 </button>
               </div>
-              <div className="bg-[#111827] rounded p-3 text-[10px] font-mono text-[#4b5e7a] leading-relaxed">
+              <div className="bg-[#111827] rounded p-3 text-[10px] font-mono text-[#f5f6f7] leading-relaxed">
                 <div className="text-[#f59e0b] mb-1">Para agregar permanentemente al repo:</div>
-                <div className="text-[#94a3b8]">1. Descarga el JSON y cópialo en <span className="text-[#e2e8f0]">models-config-test/</span></div>
-                <div className="text-[#94a3b8]">2. Ejecuta: <span className="text-[#e2e8f0]">npm run prepare:data</span></div>
-                <div className="text-[#94a3b8]">3. Ejecuta: <span className="text-[#e2e8f0]">npm run build</span> y redespliega</div>
+                <div className="text-[#f5f6f7]">1. Descarga el JSON y cópialo en <span className="text-[#e2e8f0]">models-config-test/</span></div>
+                <div className="text-[#f5f6f7]">2. Ejecuta: <span className="text-[#e2e8f0]">npm run prepare:data</span></div>
+                <div className="text-[#f5f6f7]">3. Ejecuta: <span className="text-[#e2e8f0]">npm run build</span> y redespliega</div>
               </div>
             </div>
           )}

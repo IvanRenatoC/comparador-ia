@@ -32,8 +32,8 @@ export default {
         },
         text: {
           primary: '#e2e8f0',
-          secondary: '#94a3b8',
-          muted: '#4b5e7a',
+          secondary: '#f5f6f7',
+          muted: '#f5f6f7',
           accent: '#00d4ff',
         },
       },

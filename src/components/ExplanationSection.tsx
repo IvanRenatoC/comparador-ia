@@ -11,7 +11,7 @@ function List({ items, color, icon }: { items: string[]; color: string; icon: st
   return (
     <ul className="space-y-1.5 mt-2">
       {items.map((item, i) => (
-        <li key={i} className="flex items-start gap-2 text-[12px] leading-relaxed text-[#94a3b8]">
+        <li key={i} className="flex items-start gap-2 text-[12px] leading-relaxed text-[#f5f6f7]">
           <span className="shrink-0 mt-0.5" style={{ color }}>{icon}</span>
           <span>{item}</span>
         </li>
@@ -23,7 +23,7 @@ function List({ items, color, icon }: { items: string[]; color: string; icon: st
 export default function ExplanationSection({ explanation, nameA, nameB }: Props) {
   return (
     <div>
-      <div className="text-[10px] font-mono tracking-widest uppercase text-[#4b5e7a] mb-3">
+      <div className="text-[10px] font-mono tracking-widest uppercase text-[#f5f6f7] mb-3">
         Lectura ejecutiva de la comparación
       </div>
 
@@ -47,7 +47,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.wins.length
               ? <List items={explanation.wins} color="#00d4ff" icon="↑" />
-              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin ventajas detectadas.</p>}
+              : <p className="text-[11px] text-[#f5f6f7] font-mono mt-2">Sin ventajas detectadas.</p>}
           </div>
 
           <div className="bg-[#111827] p-4">
@@ -59,7 +59,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.losses.length
               ? <List items={explanation.losses} color="#3b82f6" icon="↑" />
-              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin ventajas de A detectadas.</p>}
+              : <p className="text-[11px] text-[#f5f6f7] font-mono mt-2">Sin ventajas de A detectadas.</p>}
           </div>
 
           <div className="bg-[#111827] p-4">
@@ -71,7 +71,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
             </div>
             {explanation.ties.length
               ? <List items={explanation.ties} color="#f59e0b" icon="≈" />
-              : <p className="text-[11px] text-[#4b5e7a] font-mono mt-2">Sin empates.</p>}
+              : <p className="text-[11px] text-[#f5f6f7] font-mono mt-2">Sin empates.</p>}
           </div>
         </div>
 
@@ -95,7 +95,7 @@ export default function ExplanationSection({ explanation, nameA, nameB }: Props)
 
         {/* Methodology */}
         <div className="px-4 py-2 border-t border-[#1e2d45] bg-[#080b14]">
-          <p className="text-[10px] font-mono text-[#4b5e7a]">⚠ {explanation.methodologyWarning}</p>
+          <p className="text-[10px] font-mono text-[#f5f6f7]">⚠ {explanation.methodologyWarning}</p>
         </div>
       </div>
     </div>

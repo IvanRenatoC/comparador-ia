@@ -13,18 +13,18 @@ export default function Header() {
             <h1 className="font-mono text-base font-bold text-[#e2e8f0] glitch-title tracking-tight">
               COMPARADOR<span className="text-[#00d4ff]">_IA</span>
             </h1>
-            <p className="text-[10px] text-[#4b5e7a] font-mono tracking-widest uppercase mt-0.5">
+            <p className="text-[10px] text-[#f5f6f7] font-mono tracking-widest uppercase mt-0.5">
               Análisis arquitectónico desde config.json
             </p>
           </div>
         </div>
 
         <div className="flex items-center gap-3">
-          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono text-[#4b5e7a]">
+          <div className="hidden sm:flex items-center gap-2 text-[11px] font-mono text-[#f5f6f7]">
             <span className="w-1.5 h-1.5 rounded-full bg-[#10b981] animate-pulse" />
             localhost:5050
           </div>
-          <div className="text-[10px] font-mono px-2 py-1 border border-[#1e2d45] rounded text-[#4b5e7a]">
+          <div className="text-[10px] font-mono px-2 py-1 border border-[#1e2d45] rounded text-[#f5f6f7]">
             v0.1
           </div>
         </div>
