@@ -22,7 +22,7 @@ function Section({ title, children }: { title?: string; children: React.ReactNod
       {title && (
         <div className="flex items-center gap-3">
           <div className="w-4 h-px bg-[#00d4ff]/40" />
-          <span className="text-[9px] font-mono tracking-widest uppercase text-[#00d4ff]/60">{title}</span>
+          <span className="text-[9px] font-mono tracking-widest uppercase [color:var(--color-section-title)]">{title}</span>
           <div className="flex-1 h-px bg-[#e2e8f0] dark:bg-[#1e2d45]" />
         </div>
       )}

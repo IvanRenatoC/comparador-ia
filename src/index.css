@@ -24,6 +24,7 @@
   --chart-text-min: #94a3b8;
   --chart-grid: #e2e8f0;
   --grid-color: rgba(100, 116, 139, 0.06);
+  --color-section-title: #1e293b;
 }
 
 /* ── DARK MODE ── */
@@ -42,6 +43,7 @@
   --chart-text-min: #f5f6f7;
   --chart-grid: #1e2d45;
   --grid-color: rgba(0, 212, 255, 0.025);
+  --color-section-title: #e2e8f0;
 }
 
 * {
